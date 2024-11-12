@@ -1,7 +1,6 @@
 ---
 title: AnimatedSwitcher
 sidebar_label: AnimatedSwitcher
-slug: animatedswitcher
 ---
 
 A control that by default does a cross-fade between a new control and the control previously set on the AnimatedSwitcher as a `content`.
@@ -57,29 +56,49 @@ def main(page: ft.Page):
         ft.ElevatedButton("Animate!", on_click=animate),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
 
 ## Properties
 
+### `content`
+
+The content to display. When the `content` changes, the AnimatedSwitcher will animate the transition from the
+old `content` to the new one.
+
+Value is of type `Control`.
+
 ### `duration`
 
-The duration, in milliseconds, of the transition from the old `content` value to the new one. Default is `1000` milliseconds.
+The duration, in milliseconds, of the transition from the old `content` value to the new one.
+
+Value is of type `int` defaults to `1000` milliseconds.
 
 ### `reverse_duration`
 
-The duration, in milliseconds, of the transition from the new `content` value to the old one. Default is `1000` milliseconds.
+The duration, in milliseconds, of the transition from the new `content` value to the old one.
+
+Value is of type `int` and defaults to `1000` milliseconds.
 
 ### `switch_in_curve`
 
-The animation curve to use when transitioning in a new `content`. See [Curves](https://api.flutter.dev/flutter/animation/Curves-class.html) in Flutter docs for possible values. Property value is `AnimationCurve` enum with `AnimationCurve.LINEAR` as default.
+The animation curve to use when transitioning in a new `content`.
+
+Value is of type [`AnimationCurve`](/docs/reference/types/animationcurve) and defaults
+to [`AnimationCurve.LINEAR`](/docs/reference/types/animationcurve).
 
 ### `switch_out_curve`
 
-The animation curve to use when transitioning a previous `content` out. See [Curves](https://api.flutter.dev/flutter/animation/Curves-class.html) in Flutter docs for possible values.  Property value is `AnimationCurve` enum with `AnimationCurve.LINEAR` as default.
+The animation curve to use when transitioning a previous `content` out.
+
+Value is of type [`AnimationCurve`](/docs/reference/types/animationcurve) and defaults
+to [`AnimationCurve.LINEAR`](/docs/reference/types/animationcurve).
 
 ### `transition`
 
-An animation type to transition between new and old `content`. Property value is `AnimatedSwitcherTransition` enum with `AnimatedSwitcherTransition.FADE` as default.
+An animation type to transition between new and old `content`.
+
+Value is of type [`AnimatedSwitcherTransition`](/docs/reference/types/animatedswitchertransition) and defaults
+to [`AnimatedSwitcherTransition.FADE`](/docs/reference/types/animatedswitchertransition).   

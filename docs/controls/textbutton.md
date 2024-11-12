@@ -1,7 +1,6 @@
 ---
 title: TextButton
 sidebar_label: TextButton
-slug: textbutton
 ---
 
 import Tabs from '@theme/Tabs';
@@ -30,7 +29,7 @@ def main(page: ft.Page):
     )
 
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -57,7 +56,7 @@ def main(page: ft.Page):
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -86,7 +85,7 @@ def main(page: ft.Page):
 
     page.add(b, t)
 
-ft.app(target=main)
+ft.app(main)
 
 ```
   </TabItem>
@@ -133,7 +132,7 @@ def main(page: ft.Page):
     )
 
 
-ft.app(target=main)
+ft.app(main)
 
 ```
 
@@ -144,6 +143,14 @@ ft.app(target=main)
 <img src="/img/docs/controls/text-button/text-buttons-with-custom-content.png" className="screenshot-40" />
 
 ## Properties
+
+### `adaptive`
+
+If the value is `True`, an adaptive Button is created based on whether the target platform is iOS/macOS.
+
+On iOS and macOS, a [`CupertinoButton`](/docs/controls/cupertinobutton) is created, which matches the functionality and presentation of this button. On other platforms, a Material `TextButton` is created.
+
+Defaults to `False`.
 
 ### `autofocus`
 
@@ -159,11 +166,11 @@ Icon shown in the button.
 
 ### `icon_color`
 
-Icon [color](/docs/guides/python/colors).
+Icon [color](/docs/reference/colors).
 
 ### `style`
 
-See [ElevatedButton.style](/docs/controls/elevatedbutton#style) for more information about this property.
+Value is of type [`ButtonStyle`](/docs/reference/types/buttonstyle).
 
 ### `text`
 
@@ -179,10 +186,8 @@ The URL to open when the button is clicked. If registered, `on_click` event is f
 
 ### `url_target`
 
-Where to open URL in the web mode:
-
-* `_blank` (default) - new tab/window.
-* `_self` - the current tab/window.
+Where to open URL in the web mode. Value is of type [`UrlTarget`](/docs/reference/types/urltarget) and defaults
+to `UrlTarget.BLANK`.
 
 ## Methods
 

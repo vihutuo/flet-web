@@ -1,7 +1,6 @@
 ---
 title: PlotlyChart
 sidebar_label: PlotlyChart
-slug: plotlychart
 ---
 
 Displays [Plotly](https://plotly.com/python/) chart.
@@ -27,7 +26,7 @@ def main(page: ft.Page):
 
     page.add(PlotlyChart(fig, expand=True))
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Bar chart
@@ -57,7 +56,7 @@ def main(page: ft.Page):
 
     page.add(PlotlyChart(fig, expand=True))
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Pie chart
@@ -81,7 +80,7 @@ def main(page: ft.Page):
 
     page.add(PlotlyChart(fig, expand=True))
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Box chart
@@ -130,7 +129,7 @@ def main(page: ft.Page):
 
     page.add(PlotlyChart(fig, expand=True))
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ## Properties

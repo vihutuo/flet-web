@@ -1,7 +1,6 @@
 ---
 title: NavigationRail
 sidebar_label: NavigationRail
-slug: navigationrail
 ---
 
 A material widget that is meant to be displayed at the left or right of an app to navigate between a small number of views, typically between three and five.
@@ -58,7 +57,7 @@ def main(page: ft.Page):
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -69,13 +68,19 @@ ft.app(target=main)
 
 ### `bgcolor`
 
-Sets the [color](/docs/guides/python/colors) of the Container that holds all of the NavigationRail's contents.
+Sets the [color](/docs/reference/colors) of the Container that holds all of the NavigationRail's contents.
 
 ### `destinations`
 
 Defines the appearance of the button items that are arrayed within the navigation rail.
 
 The value must be a list of two or more `NavigationRailDestination` instances.
+
+### `elevation`
+
+Controls the size of the shadow below the NavigationRail.
+
+Defaults to `0.0`.
 
 ### `extended`
 
@@ -87,7 +92,7 @@ The rail will implicitly animate between the extended and normal state.
 
 If the rail is going to be in the extended state, then the `label_type` must be set to `none`.
 
-The default value is `False`.
+Defaults to `False`.
 
 ### `group_alignment`
 
@@ -99,15 +104,26 @@ The value must be between `-1.0` and `1.0`.
 
 If `group_alignment` is `-1.0`, then the items are aligned to the top. If `group_alignment` is `0.0`, then the items are aligned to the center. If `group_alignment` is `1.0`, then the items are aligned to the bottom.
 
-The default is `-1.0`.
+Defaults to `-1.0`.
+
+### `indicator_color`
+
+The [color](/docs/reference/colors) of the navigation rail's indicator.
+
+### `indicator_shape`
+
+The shape of the navigation rail's indicator.
+
+Value is of type [`OutlinedBorder`](/docs/reference/types/outlinedborder) and defaults to `StadiumBorder()`.
 
 ### `label_type`
 
-Defines the layout and behavior of the labels for the default, unextended NavigationRail.
+Defines the layout and behavior of the labels for the default, unextended navigation rail.
 
 When a navigation rail is extended, the labels are always shown.
 
-Property value is `NavigationRailLabelType` enum with the following values: `NONE` (default), `ALL`, `SELECTED`.
+Value is of type [`NavigationRailLabelType`](/docs/reference/types/navigationraillabeltype) and defaults to `None` - no
+labels are shown.
 
 ### `leading`
 
@@ -115,19 +131,19 @@ An optional leading control in the rail that is placed above the destinations.
 
 Its location is not affected by `group_alignment`.
 
-This is commonly a [`FloatingActionButton`](floatingactionbutton), but may also be a non-button, such as a logo.
+This is commonly a [`FloatingActionButton`](/docs/controls/floatingactionbutton), but may also be a non-button, such as a logo.
 
 ### `min_extended_width`
 
 The final width when the animation is complete for setting `extended` to `True`.
 
-The default value is `256`.
+Defaults to `256`.
 
 ### `min_width`
 
 The smallest possible width for the rail regardless of the destination's icon or label size.
 
-The default is `72`.
+Defaults to `72`.
 
 This value also defines the min width and min height of the destinations.
 
@@ -137,13 +153,25 @@ To make a compact rail, set this to `56` and use `label_type='none'`.
 
 The index into `destinations` for the current selected `NavigationRailDestination` or `None` if no destination is selected.
 
+### `selected_label_text_style`
+
+The [`TextStyle`](/docs/reference/types/textstyle) of a destination's label when it is selected.
+
+When a destination is not selected, `unselected_label_text_style` will instead be used.
+
 ### `trailing`
 
 An optional trailing control in the rail that is placed below the destinations.
 
 Its location is affected by `group_alignment`.
 
-This is commonly a list of additional options or destinations that is usually only rendered when `extended` is `True`.
+This is commonly a list of additional options or destinations that is usually only rendered when `extended=True`.
+
+### `unselected_label_text_style`
+
+The [`TextStyle`](/docs/reference/types/textstyle) of a destination's label when it is not selected.
+
+When a destination is selected, `selected_label_text_style` will instead be used.
 
 ## `NavigationRail` events
 
@@ -159,25 +187,35 @@ The name of the icon of the destination.
 
 ### `icon_content`
 
-The icon `Control` of the destination. Typically the icon is an [`Icon`](icon) control. Used instead of `icon` property.
+The icon `Control` of the destination. Typically the icon is an [`Icon`](/docs/controls/icon) control. Used instead of `icon` property.
 
 If `selected_icon_content` is provided, this will only be displayed when the destination is not selected.
 
 To make the NavigationRail more accessible, consider choosing an icon with a stroked and filled version, such as `icons.CLOUD` and `icons.CLOUD_QUEUE`. The icon should be set to the stroked version and `selected_icon` to the filled version.
 
+### `indicator_color`
+
+The [color](/docs/reference/colors) of the `indicator_shape` when this destination is selected.
+
+### `indicator_shape`
+
+The shape of the selection indicator. The value is an instance of [`OutlinedBorder`](/docs/reference/types/outlinedborder) class.
+
 ### `label`
+
+A string representing the destination's label. Will be displayed only if `label_content` is not provided.
 
 ### `label_content`
 
-The label `Control` for the destination.
+The label `Control` for the destination. If this is provided, then `label` will be ignored.
 
-The label must be provided when used with the NavigationRail. When `label_type='none'`, the label is still used for semantics, and may still be used if `extended` is `True`.
+The label must be provided when used with the `NavigationRail`. When `NavigationRail.label_type=NavigationRailLabelType.NONE`, the label is still used for semantics, and may still be used if `NavigationRail.extended=True`.
 
 ### `padding`
 
 The amount of space to inset the destination item.
 
-See [`Container.padding`](container#padding) for more information about padding and possible values.
+Padding is an instance of [`Padding`](/docs/reference/types/padding) class.
 
 ### `selected_icon`
 

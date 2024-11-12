@@ -57,7 +57,7 @@ def main(page: ft.Page):
         "Open Sans": "fonts/OpenSans-Regular.ttf",
     }
 
-    page.theme = Theme(font_family="Kanit")
+    page.theme = ft.Theme(font_family="Kanit")
 
     page.add(
         ft.Text("This is rendered with Kanit font"),
@@ -71,7 +71,7 @@ ft.app(target=main, assets_dir="assets")
 
 ## Static vs Variable fonts
 
-At the moment only [static](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#standard_or_static_fonts) fonts are supported, i.e. fonts containing only one spacific width/weight/style combination, for example "Open Sans Regular" or "Roboto Bold Italic".
+At the moment only [static](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#standard_or_static_fonts) fonts are supported, i.e. fonts containing only one specific width/weight/style combination, for example "Open Sans Regular" or "Roboto Bold Italic".
 
 [Variable](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#variable_fonts) fonts support is still [work in progress](https://github.com/flutter/flutter/issues/33709).
 
@@ -81,5 +81,5 @@ However, if you need to use a variable font in your app you can create static "i
 
 To explore available font features (e.g. possible options for `wght`) use [Wakamai Fondue](https://wakamaifondue.com/beta/) online tool.
 
-[Give Flet a try](/docs/guides/python/getting-started) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
+[Give Flet a try](/docs) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
 

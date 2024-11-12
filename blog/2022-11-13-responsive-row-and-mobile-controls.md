@@ -16,7 +16,7 @@ We just released [Flet 0.1.65](https://pypi.org/project/flet/0.1.65/) which is a
 
 `ResponsiveRow` allows aligning child controls to virtual columns. By default, a virtual grid has 12 columns, but that can be customized with `ResponsiveRow.columns` property.
 
-Similar to `expand` property every control now has `col` property which allows specifying how many columns a control should span. For examle, to make a layout consisting of two columns spanning 6 virtual columns each:
+Similar to `expand` property every control now has `col` property which allows specifying how many columns a control should span. For example, to make a layout consisting of two columns spanning 6 virtual columns each:
 
 ```python
 import flet as ft
@@ -116,7 +116,7 @@ ft.app(target=main)
 
 ## Other new controls
 
-This release adds new visual and non-visual controls requested by Flet community and also required to build UI of the upcoming [Flet Studio](/docs/guides/python/mobile-support#flet-studio-for-ios-and-android).
+This release adds new visual and non-visual controls requested by Flet community and also required to build UI of the upcoming [Flet Studio](/docs/cookbook/mobile-support#flet-studio-for-ios-and-android).
 
 ### BottomSheet
 
@@ -140,7 +140,7 @@ A tooltip control:
 
 <img src="/img/docs/controls/tooltip/custom-tooltip.gif" className="screenshot-30"/>
 
-`Tooltip` [docs](/docs/controls/tooltip), [example](https://github.com/flet-dev/examples/blob/main/python/controls/tooltip/custom-tooltip.py).
+`Tooltip` [docs](/docs/reference/types/tooltip), [example](https://github.com/flet-dev/examples/blob/main/python/controls/tooltip/custom-tooltip.py).
 
 ### HapticFeedback
 

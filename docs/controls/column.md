@@ -1,7 +1,6 @@
 ---
 title: Column
 sidebar_label: Column
-slug: column
 ---
 
 A control that displays its children in a vertical array.
@@ -59,7 +58,7 @@ def main(page: ft.Page):
 
     page.add(ft.Column([ ft.Text("Spacing between items"), gap_slider]), col)
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -126,7 +125,7 @@ def main(page: ft.Page):
         ft.Container(content=col, bgcolor=ft.colors.AMBER_100),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -183,7 +182,7 @@ def main(page: ft.Page):
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -241,14 +240,14 @@ def main(page: ft.Page):
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
 
 ### Infinite scroll list
 
-The following example demonstrates adding of list items on-the-fly, as user scroll to the bottom, creating the illusion of inifinite list:
+The following example demonstrates adding of list items on-the-fly, as user scroll to the bottom, creating the illusion of infinite list:
 
 ```python
 import threading
@@ -302,15 +301,15 @@ def main(page: ft.Page):
     page.theme = ft.Theme(
         scrollbar_theme=ft.ScrollbarTheme(
             track_color={
-                ft.MaterialState.HOVERED: ft.colors.AMBER,
-                ft.MaterialState.DEFAULT: ft.colors.TRANSPARENT,
+                ft.ControlState.HOVERED: ft.colors.AMBER,
+                ft.ControlState.DEFAULT: ft.colors.TRANSPARENT,
             },
             track_visibility=True,
             track_border_color=ft.colors.BLUE,
             thumb_visibility=True,
             thumb_color={
-                ft.MaterialState.HOVERED: ft.colors.RED,
-                ft.MaterialState.DEFAULT: ft.colors.GREY_300,
+                ft.ControlState.HOVERED: ft.colors.RED,
+                ft.ControlState.DEFAULT: ft.colors.GREY_300,
             },
             thickness=30,
             radius=15,
@@ -374,14 +373,7 @@ ft.app(main)
 
 How the child Controls should be placed vertically.
 
-Property value is `MainAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `END`
-* `CENTER`
-* `SPACE_BETWEEN`
-* `SPACE_AROUND`
-* `SPACE_EVENLY`
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment).
 
 ### `auto_scroll`
 
@@ -395,43 +387,36 @@ A list of Controls to display inside the Column.
 
 How the child Controls should be placed horizontally.
 
-Property value is `CrossAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `CENTER`
-* `END`
-* `STRETCH`
-* `BASELINE`
+Value is of type [`CrossAxisAlignment`](/docs/reference/types/crossaxisalignment) and defaults
+to `CrossAxisAlignment.START`.
 
 ### `on_scroll_interval`
 
 Throttling in milliseconds for `on_scroll` event. Default is `10`.
 
-### `scroll`
+### `rtl`
 
-Enables a vertical scrolling for the Column to prevent its content overflow.
-
-Property value is an optional `ScrollMode` enum with `None` as default.
-
-Supported values:
-
-* `None` (default) - the column is non-scrollable and its content could overflow.
-* `AUTO` - scrolling is enabled and scroll bar is only shown when scrolling occurs.
-* `ADAPTIVE` - scrolling is enabled and scroll bar is always shown when running app as web or desktop.
-* `ALWAYS` - scrolling is enabled and scroll bar is always shown.
-* `HIDDEN` - scrolling is enabled, but scroll bar is always hidden.
-
-### `spacing`
-
-Spacing between controls in a Column. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+`True` to set text direction to right-to-left. Default is `False`.
 
 ### `run_spacing`
 
 Spacing between runs when `wrap=True`. Default value is 10.
 
+### `scroll`
+
+Enables a vertical scrolling for the Column to prevent its content overflow.
+
+Value is of type [`ScrollMode`](/docs/reference/types/scrollmode) and defaults to `ScrollMode.None`.
+
+### `spacing`
+
+Spacing between controls in a Column. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+
 ### `tight`
 
-Specifies how much space should be occupied vertically. Default is `False` - allocate all space to children.
+Specifies how much space should be occupied vertically.
+
+Defaults to `False` - allocate all space to children.
 
 ### `wrap`
 
@@ -443,7 +428,7 @@ When set to `True` the Column will put child controls into additional columns (r
 
 Moves scroll position to either absolute `offset`, relative `delta` or jump to the control with specified `key`.
 
-`offset` is an abosulte value between minimum and maximum extents of a scrollable control, for example:
+`offset` is an absolute value between minimum and maximum extents of a scrollable control, for example:
 
 ```python
 products.scroll_to(offset=100, duration=1000)
@@ -491,9 +476,10 @@ ft.app(main)
 `scroll_to()` method won't work with `ListView` and `GridView` controls building their items dynamically.
 :::
 
-`duration` is scrolling animation duration in milliseconds. Defaults to 0 - no animation.
+`duration` is scrolling animation duration in milliseconds. Defaults to `0` - no animation.
 
-`curve` configures animation curve. Defaults to `ft.AnimationCurve.EASE`.
+`curve` configures animation curve. Property value is [`AnimationCurve`](/docs/reference/types/animationcurve) enum.
+Defaults to `AnimationCurve.EASE`.
 
 ## Events
 
@@ -501,22 +487,7 @@ ft.app(main)
 
 Fires when scroll position is changed by a user.
 
-Event handler argument is an instance of `ft.OnScrollEvent` class with the following properties:
-
-* `event_type` (str) - type of the scroll event:
-  * `start` - control has started scrolling;
-  * `update` - control has changed its scroll position;
-  * `end` - control has stopped scrolling;
-  * `user` - user has changed the direction in which they are scrolling;
-  * `over` - control has not changed its scroll position because the change would have caused its scroll position to go outside its scroll bounds;
-* `pixels` (float) - The current scroll position, in logical pixels.
-* `min_scroll_extent` (float) - The minimum in-range value for `pixels`.
-* `max_scroll_extent` (float) - The maximum in-range value for `pixels`.
-* `viewport_dimension` (float) - The extent of the viewport.
-* `scroll_delta` (float) - The distance by which the scrollable was scrolled, in logical pixels. Set for `update` events only.
-* `direction` (str) - The direction in which the user is scrolling: `idle`, `forward`, `reverse`. Set for `user` events only.
-* `overscroll` (float) - The number of logical pixels that the scrollable avoided scrolling. Set for `over` events only.
-* `velocity` (float) - The velocity at which the ScrollPosition was changing when this overscroll happened. Set for `over` events only.
+Event handler argument is an instance of [`OnScrollEvent`](/docs/reference/types/onscrollevent) class.
 
 ## Expanding children
 
@@ -540,3 +511,5 @@ r = ft.Column([
 ```
 
 In general, the resulting height of a child in percents is calculated as `expand / sum(all expands) * 100%`.
+
+If you need to give the child Control of the Column the flexibility to expand to fill the available space vertically but not require it to fill the available space, set its `expand_loose` property to `True`.

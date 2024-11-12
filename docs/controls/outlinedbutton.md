@@ -1,7 +1,6 @@
 ---
 title: OutlinedButton
 sidebar_label: OutlinedButton
-slug: outlinedbutton
 ---
 
 import Tabs from '@theme/Tabs';
@@ -30,7 +29,7 @@ def main(page: ft.Page):
         ft.OutlinedButton("Disabled button", disabled=True),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 
@@ -58,7 +57,7 @@ def main(page: ft.Page):
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 
@@ -88,7 +87,7 @@ def main(page: ft.Page):
 
     page.add(b, t)
 
-ft.app(target=main)
+ft.app(main)
 ```
 
   </TabItem>
@@ -134,7 +133,7 @@ def main(page: ft.Page):
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 
 ```
 
@@ -147,9 +146,23 @@ ft.app(target=main)
 
 ## Properties
 
+### `adaptive`
+
+If the value is `True`, an adaptive button is created based on whether the target platform is iOS/macOS.
+
+On iOS and macOS, a [`CupertinoButton`](/docs/controls/cupertinobutton) is created, which matches the functionality and presentation of this button. On other platforms, a Material `ElevatedButton` is created.
+
+Defaults to `False`.
+
 ### `autofocus`
 
 True if the control will be selected as the initial focus. If there is more than one control on a page with autofocus set, then the first one added to the page will get focus.
+
+### `clip_behavior`
+
+The content will be clipped (or not) according to this option.
+
+Value is of type [`ClipBehavior`](/docs/reference/types/clipbehavior) and defaults to `ClipBehavior.NONE`.
 
 ### `content`
 
@@ -161,11 +174,11 @@ Icon shown in the button.
 
 ### `icon_color`
 
-Icon [color](/docs/guides/python/colors).
+Icon [color](/docs/reference/colors).
 
 ### `style`
 
-See [ElevatedButton.style](/docs/controls/elevatedbutton#style) for more information about this property.
+The value is an instance of [`ButtonStyle`](/docs/reference/types/buttonstyle) class. 
 
 ### `text`
 
@@ -181,10 +194,9 @@ The URL to open when the button is clicked. If registered, `on_click` event is f
 
 ### `url_target`
 
-Where to open URL in the web mode:
+Where to open URL in the web mode.
 
-* `_blank` (default) - new tab/window.
-* `_self` - the current tab/window.
+Value is of type [`UrlTarget`](/docs/reference/types/urltarget) and defaults to `UrlTarget.BLANK`.
 
 ## Methods
 

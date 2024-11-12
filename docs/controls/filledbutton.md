@@ -1,13 +1,14 @@
 ---
 title: FilledButton
 sidebar_label: FilledButton
-slug: filledbutton
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Filled buttons have the most visual impact after the [FloatingActionButton](/docs/controls/floatingactionbutton), and should be used for important, final actions that complete a flow, like **Save**, **Join now**, or **Confirm**. See [Material 3 buttons](https://m3.material.io/components/buttons/overview) for more info.
+Filled buttons have the most visual impact after the [`FloatingActionButton`](/docs/controls/floatingactionbutton), and
+should be used for important, final actions that complete a flow, like **Save**, **Join now**, or **Confirm**.
+See [Material 3 buttons](https://m3.material.io/components/buttons/overview) for more info.
 
 <img src="/img/docs/controls/filled-button/basic-filled-buttons.png" className="screenshot-20" />
 
@@ -32,13 +33,21 @@ def main(page: ft.Page):
         ft.FilledButton("Button with icon", icon="add"),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 
 </Tabs>
 
 ## Properties
+
+### `adaptive`
+
+If the value is `True`, an adaptive Button is created based on whether the target platform is iOS/macOS.
+
+On iOS and macOS, a [`CupertinoButton`](/docs/controls/cupertinofilledbutton) is created, which matches the functionality and presentation of this button. On other platforms, a Material `FilledButton` is created.
+
+Defaults to `False`.
 
 ### `autofocus`
 
@@ -54,11 +63,11 @@ Icon shown in the button.
 
 ### `icon_color`
 
-Icon [color](/docs/guides/python/colors).
+Icon [color](/docs/reference/colors).
 
 ### `style`
 
-See [ElevatedButton.style](/docs/controls/elevatedbutton#style) for more information about this property.
+The value is an instance of [`ButtonStyle`](/docs/reference/types/buttonstyle) class.
 
 ### `text`
 
@@ -74,10 +83,9 @@ The URL to open when the button is clicked. If registered, `on_click` event is f
 
 ### `url_target`
 
-Where to open URL in the web mode:
+Where to open URL in the web mode.
 
-* `_blank` (default) - new tab/window.
-* `_self` - the current tab/window.
+Value is of type [`UrlTarget`](/docs/reference/types/urltarget) and defaults to `UrlTarget.BLANK`.
 
 ## Events
 

@@ -1,7 +1,6 @@
 ---
 title: ProgressRing
 sidebar_label: ProgressRing
-slug: progressring
 ---
 
 A material design circular progress indicator, which spins to indicate that the application is busy.
@@ -45,7 +44,7 @@ def main(page: ft.Page):
         sleep(0.1)
         page.update()
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -56,11 +55,31 @@ ft.app(target=main)
 
 ### `bgcolor`
 
-[Color](/docs/guides/python/colors) of the circular track being filled by the circular indicator.
+[Color](/docs/reference/colors) of the circular track being filled by the circular indicator.
 
 ### `color`
 
-The progress indicator's [color](/docs/guides/python/colors).
+The progress indicator's [color](/docs/reference/colors).
+
+### `semantics_label`
+
+The `Semantics.label` for this progress indicator.
+
+### `semantics_value`
+
+The `Semantics.value` for this progress indicator.
+
+### `stroke_align`
+
+The relative position of the stroke. Value typically ranges be `-1.0` (inside stroke) and `1.0` (outside stroke).
+
+Defaults to `0` - centered.
+
+### `stroke_cap`
+
+The progress indicator's line ending.
+
+Value is of type [`StrokeCap`](/docs/reference/types/strokecap).
 
 ### `stroke_width`
 
@@ -72,4 +91,6 @@ The text displayed when hovering the mouse over the control.
 
 ### `value`
 
-The value of this progress indicator. A value of 0.0 means no progress and 1.0 means that progress is complete. The value will be clamped to be in the range 0.0-1.0. If null, this progress indicator is indeterminate, which means the indicator displays a predetermined animation that does not indicate how much actual progress is being made.
+The value of this progress indicator. A value of `0.0` means no progress and `1.0` means that progress is complete. The
+value will be clamped to be in the range `0.0` - `1.0`. If `None`, this progress indicator is indeterminate, which means
+the indicator displays a predetermined animation that does not indicate how much actual progress is being made.

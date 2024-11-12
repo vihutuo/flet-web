@@ -1,7 +1,6 @@
 ---
 title: HapticFeedback
 sidebar_label: HapticFeedback
-slug: hapticfeedback
 ---
 
 Allows access to the haptic feedback interface on the device.
@@ -26,7 +25,7 @@ def main(page: ft.Page):
         ft.ElevatedButton("Vibrate", on_click=lambda _: hf.vibrate()),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ## Methods

@@ -1,7 +1,6 @@
 ---
 title: LineChart
 sidebar_label: LineChart
-slug: linechart
 ---
 
 Draws a line chart.
@@ -359,93 +358,161 @@ ft.app(main)
 
 <img src="/img/docs/controls/charts/linechart-diagram.svg" className="screenshot-100"/>
 
-### `data_series`
-
-A list of [`LineChartData`](#linechartdata-properties) controls drawn as separate lines on a chart.
-
 ### `animate`
 
 Controls chart implicit animation.
 
-The value of `animate` property could be one of the following types:
+Value is of type [`AnimationValue`](/docs/reference/types/animationvalue).
 
-* `bool` - `True` to enable chart animation with `linear` curve and `1000` milliseconds duration.
-* `int` - enables chart animation with `linear` curve and specified number of milliseconds.
-* `ft.Animation(duration: int, curve: str)` - enables chart animation with specified duration and transition curve.
+### `baseline_x`
 
-If `animate` is `None` then `linear` animation with `150` milliseconds duration is enabled by default.
+Baseline value for X axis.
+
+Defaults to `0`.
+
+### `baseline_y`
+
+Baseline value for Y axis.
+
+Defaults to `0`.
+
+### `bgcolor`
+
+Background [color](/docs/reference/colors) of the chart.
+
+### `border`
+
+The border around the chart.
+
+Value is of type [`Border`](/docs/reference/types/border).
+
+### `bottom_axis`
+
+Configures the appearance of the bottom axis, its title and labels.
+
+Value is of type [`ChartAxis`](#chartaxis-properties).
+
+### `data_series`
+
+A list of [`LineChartData`](#linechartdata-properties) controls drawn as separate lines on a chart.
+
+### `horizontal_grid_lines`
+
+Controls drawing of chart's horizontal lines.
+
+Value is of type [`ChartGridLines`](#chartgridlines-properties).
 
 ### `interactive`
 
 Enables automatic tooltips and points highlighting when hovering over the chart.
 
-### `bgcolor`
-
-Background [color](/docs/guides/python/colors) of the chart.
-
-### `tooltip_bgcolor`
-
-Background [color](/docs/guides/python/colors) of tooltips.
-
-### `border`
-
-The border around the chart. The value is the instance of `ft.Border` class.
-
-### `point_line_start`
-
-The start of the vertical line drawn under the selected point. Default is chart's bottom edge.
-
-### `point_line_end`
-
-The end of the vertical line drawn at selected point position. Default is data point's `y` value.
-
-### `horizontal_grid_lines`
-
-Controls drawing of chart's horizontal lines. The value is the instance of [`ChartGridLines`](#chartgridlines) class.
-
-### `vertical_grid_lines`
-
-Controls drawing of chart's vertical lines. The value is the instance of [`ChartGridLines`](#chartgridlines) class.
-
 ### `left_axis`
 
-Configures the appearance of the left axis, its title and labels. The value is the instance of [`ChartAxis`](#chartaxis-properties) class.  
+Configures the appearance of the left axis, its title and labels.
 
-### `top_axis`
-
-Configures the appearance of the top axis, its title and labels. The value is the instance of [`ChartAxis`](#chartaxis-properties) class.  
-
-### `right_axis`
-
-Configures the appearance of the right axis, its title and labels. The value is the instance of [`ChartAxis`](#chartaxis-properties) class.  
-
-### `bottom_axis`
-
-Configures the appearance of the bottom axis, its title and labels. The value is the instance of [`ChartAxis`](#chartaxis-properties) class.
-
-### `baseline_x`
-
-Baseline value for X axis. Default is `0`.
-
-### `min_x`
-
-Configures the minimum displayed value for X axis.
+Value is of type [`ChartAxis`](#chartaxis-properties) class.
 
 ### `max_x`
 
 Configures the maximum displayed value for X axis.
 
-### `baseline_y`
+### `max_y`
 
-Baseline value for Y axis. Default is `0`.
+Configures the maximum displayed value for Y axis.
+
+### `min_x`
+
+Configures the minimum displayed value for X axis.
 
 ### `min_y`
 
 Configures the minimum displayed value for Y axis.
 
-### `max_y`
+### `point_line_end`
 
-Configures the maximum displayed value for Y axis.
+The end of the vertical line drawn at selected point position.
+
+Defaults to data point's `y` value.
+
+### `point_line_start`
+
+The start of the vertical line drawn under the selected point.
+
+Defaults to chart's bottom edge.
+
+### `right_axis`
+
+Configures the appearance of the right axis, its title and labels.
+
+Value is of type [`ChartAxis`](#chartaxis-properties) class.
+
+### `tooltip_bgcolor`
+
+Background [color](/docs/reference/colors) of tooltips.
+
+### `tooltip_border_side`
+
+The tooltip border side.
+
+### `tooltip_direction`
+
+Controls showing tooltip on top or bottom.
+
+Value is of type [`TooltipDirection`](/docs/reference/types/charttooltipdirection) and defaults to `TooltipDirection.AUTO`.
+
+### `tooltip_fit_inside_horizontally`
+
+Forces the tooltip to shift horizontally inside the chart, if overflow happens.
+
+Value is of type `bool`.
+
+### `tooltip_fit_inside_vertically`
+
+Forces the tooltip to shift vertically inside the chart, if overflow happens.
+
+Value is of type `bool`.
+
+### `tooltip_horizontal_offset`
+
+Applies horizontal offset for showing tooltip.
+
+### `tooltip_margin`
+
+Applies a bottom margin for showing tooltip on top of rods.
+
+### `tooltip_max_content_width`
+
+Restricts the tooltip's width.
+
+### `tooltip_padding`
+
+Applies a padding for showing contents inside the tooltip.
+
+### `tooltip_rounded_radius`
+
+Sets a rounded radius for the tooltip.
+
+### `tooltip_rotate_angle`
+
+The rotation angle of the tooltip.
+
+### `tooltip_show_on_top_of_chart_box_area`
+
+Forces the tooltip container to top of the line.
+
+Value is of type `bool` and defaults to `False`.
+
+### `top_axis`
+
+Configures the appearance of the top axis, its title and labels.
+
+Value is of type [`ChartAxis`](#chartaxis-properties).
+
+### `vertical_grid_lines`
+
+Controls drawing of chart's vertical lines.
+
+Value is of type [`ChartGridLines`](#chartgridlines-properties).
 
 ## `LineChart` events
 
@@ -461,73 +528,63 @@ Event data is an instance `ft.LineChartEvent` class with the following propertie
 
 ## `LineChartData` properties
 
-### `data_points`
+### `above_line`
 
-A list of points (dots) of [`LineChartDataPoint`](#linechartdatapoint-properties) type representing a single chart line.
+A vertical line drawn between a line point and the top edge of the chart.
 
-### `curved`
-
-Set to `True` to draw chart line as a curve. Default is `False`.
-
-### `color`
-
-A [color](/docs/guides/python/colors) of chart line.
-
-### `gradient`
-
-Gradient to draw line's background. See [`Container.gradient`](container#gradient) property for more information and possible values.
-
-### `stroke_width`
-
-The width of a chart line.
-
-### `stroke_cap_round`
-
-Set to `True` to draw rounded line caps. Default is `False`.
-
-### `dash_pattern`
-
-Defines dash effect of the line. The value is a circular list of dash offsets and lengths. For example, the list `[5, 10]` would result in dashes 5 pixels long followed by blank spaces 10 pixels long. By default, a solid line is drawn.
-
-### `shadow`
-
-Shadow to drop by a chart line. The value is the instance of `ft.Shadow` class.
+Value is of type [`ChartPointLine`](#chartpointline-properties).
 
 ### `above_line_bgcolor`
 
-Fill the area above chart line with the specified [color](/docs/guides/python/colors).
-
-### `above_line_gradient`
-
-Fill the area above chart line with the specified gradient.
+Fill the area above chart line with the specified [color](/docs/reference/colors).
 
 ### `above_line_cutoff_y`
 
 Cut off filled area above line chart at specific Y value.
 
-### `above_line`
+### `above_line_gradient`
 
-A vertical line drawn between a line point and the top edge of the chart. The value is an instance of [`ChartPointLine`](#chartpointline-properties) class.
+Fill the area above chart line with the specified gradient.
+
+### `below_line`
+
+A vertical line drawn between a line point and the bottom edge of the chart.
+
+Value is of type [`ChartPointLine`](#chartpointline-properties).
 
 ### `below_line_bgcolor`
 
-Fill the area below chart line with the specified [color](/docs/guides/python/colors).
-
-### `below_line_gradient`
-
-Fill the area below chart line with the specified gradient.
+Fill the area below chart line with the specified [color](/docs/reference/colors).
 
 ### `below_line_cutoff_y`
 
 Cut off filled area below line chart at specific Y value.
 
-### `below_line`
+### `below_line_gradient`
 
-A vertical line drawn between a line point and the bottom edge of the chart. The value is an instance of [`ChartPointLine`](#chartpointline-properties) class.
+Fill the area below chart line with the specified gradient.
 
-### `selected_below_line`
+### `color`
 
-A vertical line drawn between selected line point and the bottom adge of the chart. The value is either `True` - draw a line with default style, `False` - do not draw a line under selected point, or an instance of [`ChartPointLine`](#chartpointline-properties) class to specify line style to draw.
+A [color](/docs/reference/colors) of chart line.
+
+### `curved`
+
+Set to `True` to draw chart line as a curve.
+
+Defaults to `False`.
+
+### `dash_pattern`
+
+Defines dash effect of the line. The value is a circular list of dash offsets and lengths. For example, the list `[5, 10]` would result in dashes 5 pixels long followed by blank spaces 10 pixels long. By default, a solid line is drawn.
+
+### `data_points`
+
+A list of points (dots) of [`LineChartDataPoint`](#linechartdatapoint-properties) type representing a single chart line.
+
+### `gradient`
+
+Gradient to draw line's background. Value is of type [`Gradient`](/docs/reference/types/gradient).
 
 ### `point`
 
@@ -537,11 +594,95 @@ Configures the appearance and shape of a line point (dot). The value of this pro
 * `ChartSquarePoint` - square point
 * `ChartCrossPoint` - cross point
 
+### `prevent_curve_over_shooting`
+
+Whether to prevent overshooting when draw curve line on linear sequence spots.
+
+Defaults to `False`.
+
+### `prevent_curve_over_shooting_threshold`
+
+Threshold for applying prevent overshooting algorithm.
+
+Defaults to `10.0`.
+
+### `shadow`
+
+Shadow to drop by a chart line.
+
+Value is of type [`BoxShadow`](/docs/reference/types/boxshadow).
+
+### `selected_below_line`
+
+A vertical line drawn between selected line point and the bottom adge of the chart. The value is either `True` - draw a line with default style, `False` - do not draw a line under selected point, or an instance of [`ChartPointLine`](#chartpointline-properties) class to specify line style to draw.
+
 ### `selected_point`
 
 Configures the appearance and shape of a selected line point. See [`LineChartData.point`](#point) for supported property values.
 
+### `stroke_cap_round`
+
+Set to `True` to draw rounded line caps.
+
+Defaults to `False`.
+
+### `stroke_width`
+
+The width of a chart line.
+
 ## `LineChartDataPoint` properties
+
+### `point`
+
+Configures the appearance and shape of a line point.
+
+See [`LineChartData.point`](#point) for supported property values.
+
+### `selected`
+
+Draw the point as selected when `LineChart.interactive` is set to False.
+
+### `selected_below_line`
+
+A vertical line drawn between selected line point and the bottom adge of the chart. The value is either `True` - draw a line with default style, `False` - do not draw a line under selected point, or an instance of [`ChartPointLine`](#chartpointline-properties) class to specify line style to draw.
+
+### `selected_point`
+
+Configures the appearance and shape of a selected line point. See [`LineChartData.point`](#point) for supported property values.
+
+### `show_above_line`
+
+`True` to display a line above data point.
+
+Defaults to `True`.
+
+### `show_below_line`
+
+`True` to display a line below data point.
+
+Defaults to `True`.
+
+### `show_tooltip`
+
+`True` (default) if a tooltip should be shown on top of hovered data point.
+
+### `tooltip`
+
+A custom tooltip value.
+
+Default is `y`.
+
+### `tooltip_align`
+
+An align for the tooltip.
+
+Value is of type [`TextAlign`](/docs/reference/types/textalign).
+
+### `tooltip_style`
+
+A text style to display tooltip with.
+
+Value is of type [`ft.TextStyle`](/docs/reference/types/textstyle).
 
 ### `x`
 
@@ -551,81 +692,33 @@ The position of a point on `X` axis.
 
 The position of a point on `Y` axis.
 
-### `selected`
-
-Draw the point as selected when `LineChart.interactive` is set to False.
-
-### `show_tooltip`
-
-`True` (default) if a tooltip should be shown on top of hovered data point.
-
-### `tooltip`
-
-A custom tooltip value. Default is `y`.
-
-### `tooltip_style`
-
-A text style to display tooltip with. The value is the instance of [`ft.TextStyle`](text#textstyle-properties) class.
-
-### `tooltip_align`
-
-An align for the tooltip. The value is the instance of `ft.TextAlign` enum.
-
-### `point`
-
-Configures the appearance and shape of a line point. See [`LineChartData.point`](#point) for supported property values.
-
-### `selected_point`
-
-Configures the appearance and shape of a selected line point. See [`LineChartData.point`](#point) for supported property values.
-
-### `show_above_line`
-
-`True` to display a line above data point. Default is `True`.
-
-### `show_below_line`
-
-`True` to display a line below data point. Default is `True`.
-
-### `selected_below_line`
-
-A vertical line drawn between selected line point and the bottom adge of the chart. The value is either `True` - draw a line with default style, `False` - do not draw a line under selected point, or an instance of [`ChartPointLine`](#chartpointline-properties) class to specify line style to draw.
-
 ## `ChartGridLines` properties
 
 Configures the appearance of horizontal and vertical grid lines within the chart.
 
-### `interval`
-
-Interval between grid lines. Default is `1`.
-
 ### `color`
 
-[Color](/docs/guides/python/colors) of a grid line.
-
-### `width`
-
-Width of a grid line. Default is `1`.
+[Color](/docs/reference/colors) of a grid line.
 
 ### `dash_pattern`
 
 Defines dash effect of the line. The value is a circular list of dash offsets and lengths. For example, the list `[5, 10]` would result in dashes 5 pixels long followed by blank spaces 10 pixels long. By default, a solid line is drawn.
 
+### `interval`
+
+Interval between grid lines.
+
+Defaults to `1`.
+
+### `width`
+
+Width of a grid line.
+
+Defaults to `1`.
+
 ## `ChartAxis` properties
 
 Configures chart axis.
-
-### `title`
-
-A `Control` to display as axis title.
-
-### `title_size`
-
-Width or height of title area.
-
-### `show_labels`
-
-`True` to display labels along the axis. If `labels` is empty then automatic labels are displayed. 
 
 ### `labels`
 
@@ -639,28 +732,40 @@ The interval between automatic labels.
 
 Width or height of labels area.
 
+### `show_labels`
+
+`True` to display labels along the axis. If `labels` is empty then automatic labels are displayed. 
+
+### `title`
+
+A `Control` to display as axis title.
+
+### `title_size`
+
+Width or height of title area.
+
 ## `ChartAxisLabel` properties
 
 Configures a custom label for specific value.
-
-### `value`
-
-A value to draw label for.
 
 ### `label`
 
 A `Control` to draw as a label.
 
+### `value`
+
+A value to draw label for.
+
 ## `ChartPointLine` properties
 
 ### `color`
 
-[Color](/docs/guides/python/colors) of the line.
-
-### `width`
-
-Width of the line.
+[Color](/docs/reference/colors) of the line.
 
 ### `dash_pattern`
 
 Dash pattern of the line.
+
+### `width`
+
+Width of the line.

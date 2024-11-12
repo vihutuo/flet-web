@@ -1,7 +1,6 @@
 ---
 title: Text
 sidebar_label: Text
-slug: text
 ---
 
 Text is a control for displaying text.
@@ -47,26 +46,26 @@ def main(page: ft.Page):
             italic=True,
         ),
         ft.Text("Size 70, w900, selectable", size=70, weight=ft.FontWeight.W_900, selectable=True),
-        ft.Text("Limit long text to 1 line with ellipsis", style=ft.TextThemeStyle.HEADLINE_SMALL),
+        ft.Text("Limit long text to 1 line with ellipsis", theme_style=ft.TextThemeStyle.HEADLINE_SMALL),
         ft.Text(
-            "Proin rutrum, purus sit amet elementum volutpat, nunc lacus vulputate orci, cursus ultrices neque dui quis purus. Ut ultricies purus nec nibh bibendum, eget vestibulum metus varius. Duis convallis maximus justo, eu rutrum libero maximus id. Donec ullamcorper arcu in sapien molestie, non pellentesque tellus pellentesque. Nulla nec tristique ex. Maecenas euismod nisl enim, a convallis arcu laoreet at. Ut at tortor finibus, rutrum massa sit amet, pulvinar velit. Phasellus diam lorem, viverra vitae leo vitae, consequat suscipit lorem.",
+            "Proin rutrum, purus sit amet elementum volutpat, nunc lacus vulputate orci, cursus ultrices neque dui quis purus. Ut ultricies purus nec nibh bibendum, eget vestibulum metus various. Duis convallis maximus justo, eu rutrum libero maximus id. Donec ullamcorper arcu in sapien molestie, non pellentesque tellus pellentesque. Nulla nec tristique ex. Maecenas euismod nisl enim, a convallis arcu laoreet at. Ut at tortor finibus, rutrum massa sit amet, pulvinar velit. Phasellus diam lorem, viverra vitae leo vitae, consequat suscipit lorem.",
             max_lines=1,
-            overflow="ellipsis",
+            overflow=ft.TextOverflow.ELLIPSIS,
         ),
-        ft.Text("Limit long text to 2 lines and fading", style=ft.TextThemeStyle.HEADLINE_SMALL),
+        ft.Text("Limit long text to 2 lines and fading", theme_style=ft.TextThemeStyle.HEADLINE_SMALL),
         ft.Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis nibh vitae purus consectetur facilisis sed vitae ipsum. Quisque faucibus sed nulla placerat sagittis. Phasellus condimentum risus vitae nulla vestibulum auctor. Curabitur scelerisque, nibh eget imperdiet consequat, odio ante tempus diam, sed volutpat nisl erat eget turpis. Sed viverra, diam sit amet blandit vulputate, mi tellus dapibus lorem, vitae vehicula diam mauris placerat diam. Morbi sit amet pretium turpis, et consequat ligula. Nulla velit sem, suscipit sit amet dictum non, tincidunt sed nulla. Aenean pellentesque odio porttitor sagittis aliquam. Nam varius at metus vitae vulputate. Praesent faucibus nibh lorem, eu pretium dolor dictum nec. Phasellus eget dui laoreet, viverra magna vitae, pellentesque diam.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis nibh vitae purus consectetur facilisis sed vitae ipsum. Quisque faucibus sed nulla placerat sagittis. Phasellus condimentum risus vitae nulla vestibulum auctor. Curabitur scelerisque, nibh eget imperdiet consequat, odio ante tempus diam, sed volutpat nisl erat eget turpis. Sed viverra, diam sit amet blandit vulputate, mi tellus dapibus lorem, vitae vehicula diam mauris placerat diam. Morbi sit amet pretium turpis, et consequat ligula. Nulla velit sem, suscipit sit amet dictum non, tincidunt sed nulla. Aenean pellentesque odio porttitor sagittis aliquam. Name various at metus vitae vulputate. Praesent faucibus nibh lorem, eu pretium dolor dictum nec. Phasellus eget dui laoreet, viverra magna vitae, pellentesque diam.",
             max_lines=2,
         ),
-        ft.Text("Limit the width and height of long text", style=ft.TextThemeStyle.HEADLINE_SMALL),
+        ft.Text("Limit the width and height of long text", theme_style=ft.TextThemeStyle.HEADLINE_SMALL),
         ft.Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis nibh vitae purus consectetur facilisis sed vitae ipsum. Quisque faucibus sed nulla placerat sagittis. Phasellus condimentum risus vitae nulla vestibulum auctor. Curabitur scelerisque, nibh eget imperdiet consequat, odio ante tempus diam, sed volutpat nisl erat eget turpis. Sed viverra, diam sit amet blandit vulputate, mi tellus dapibus lorem, vitae vehicula diam mauris placerat diam. Morbi sit amet pretium turpis, et consequat ligula. Nulla velit sem, suscipit sit amet dictum non, tincidunt sed nulla. Aenean pellentesque odio porttitor sagittis aliquam. Nam varius at metus vitae vulputate. Praesent faucibus nibh lorem, eu pretium dolor dictum nec. Phasellus eget dui laoreet, viverra magna vitae, pellentesque diam.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis nibh vitae purus consectetur facilisis sed vitae ipsum. Quisque faucibus sed nulla placerat sagittis. Phasellus condimentum risus vitae nulla vestibulum auctor. Curabitur scelerisque, nibh eget imperdiet consequat, odio ante tempus diam, sed volutpat nisl erat eget turpis. Sed viverra, diam sit amet blandit vulputate, mi tellus dapibus lorem, vitae vehicula diam mauris placerat diam. Morbi sit amet pretium turpis, et consequat ligula. Nulla velit sem, suscipit sit amet dictum non, tincidunt sed nulla. Aenean pellentesque odio porttitor sagittis aliquam. Name various at metus vitae vulputate. Praesent faucibus nibh lorem, eu pretium dolor dictum nec. Phasellus eget dui laoreet, viverra magna vitae, pellentesque diam.",
             width=700,
             height=100,
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Pre-defined theme text styles
@@ -81,24 +80,24 @@ def main(page: ft.Page):
     page.scroll = "adaptive"
 
     page.add(
-        ft.Text("Display Large", style=ft.TextThemeStyle.DISPLAY_LARGE),
-        ft.Text("Display Medium", style=ft.TextThemeStyle.DISPLAY_MEDIUM),
-        ft.Text("Display Small", style=ft.TextThemeStyle.DISPLAY_SMALL),
-        ft.Text("Headline Large", style=ft.TextThemeStyle.HEADLINE_LARGE),
-        ft.Text("Headline Medium", style=ft.TextThemeStyle.HEADLINE_MEDIUM),
-        ft.Text("Headline Small", style=ft.TextThemeStyle.HEADLINE_MEDIUM),
-        ft.Text("Title Large", style=ft.TextThemeStyle.TITLE_LARGE),
-        ft.Text("Title Medium", style=ft.TextThemeStyle.TITLE_MEDIUM),
-        ft.Text("Title Small", style=ft.TextThemeStyle.TITLE_SMALL),
-        ft.Text("Label Large", style=ft.TextThemeStyle.LABEL_LARGE),
-        ft.Text("Label Medium", style=ft.TextThemeStyle.LABEL_MEDIUM),
-        ft.Text("Label Small", style=ft.TextThemeStyle.LABEL_SMALL),
-        ft.Text("Body Large", style=ft.TextThemeStyle.BODY_LARGE),
-        ft.Text("Body Medium", style=ft.TextThemeStyle.BODY_MEDIUM),
-        ft.Text("Body Small", style=ft.TextThemeStyle.BODY_SMALL),
+        ft.Text("Display Large", theme_style=ft.TextThemeStyle.DISPLAY_LARGE),
+        ft.Text("Display Medium", theme_style=ft.TextThemeStyle.DISPLAY_MEDIUM),
+        ft.Text("Display Small", theme_style=ft.TextThemeStyle.DISPLAY_SMALL),
+        ft.Text("Headline Large", theme_style=ft.TextThemeStyle.HEADLINE_LARGE),
+        ft.Text("Headline Medium", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM),
+        ft.Text("Headline Small", theme_style=ft.TextThemeStyle.HEADLINE_SMALL),
+        ft.Text("Title Large", theme_style=ft.TextThemeStyle.TITLE_LARGE),
+        ft.Text("Title Medium", theme_style=ft.TextThemeStyle.TITLE_MEDIUM),
+        ft.Text("Title Small", theme_style=ft.TextThemeStyle.TITLE_SMALL),
+        ft.Text("Label Large", theme_style=ft.TextThemeStyle.LABEL_LARGE),
+        ft.Text("Label Medium", theme_style=ft.TextThemeStyle.LABEL_MEDIUM),
+        ft.Text("Label Small", theme_style=ft.TextThemeStyle.LABEL_SMALL),
+        ft.Text("Body Large", theme_style=ft.TextThemeStyle.BODY_LARGE),
+        ft.Text("Body Medium", theme_style=ft.TextThemeStyle.BODY_MEDIUM),
+        ft.Text("Body Small", theme_style=ft.TextThemeStyle.BODY_SMALL),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Font with variable weight
@@ -136,7 +135,7 @@ def main(page: ft.Page):
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Rich text basics
@@ -335,11 +334,11 @@ ft.app(main)
 
 ### `bgcolor`
 
-Text background [color](/docs/guides/python/colors).
+Text background [color](/docs/reference/colors).
 
 ### `color`
 
-Text foreground [color](/docs/guides/python/colors).
+Text foreground [color](/docs/reference/colors).
 
 ### `font_family`
 
@@ -357,15 +356,15 @@ def main(page: ft.Page):
         ft.Text("This text is rendered with Consolas font", font_family="Consolas")
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 There is one limitation though - system fonts cannot be used in a Flet web app with "CanvasKit" renderer.
 
 Flet web app can render its UI with one of these renderers:
 
-* **HTML renderer** - uses a combination of HTML elements, CSS, Canvas elements, and SVG elements. This renderer has a smaller download size.
-* **CanvasKit renderer** - this renderer is fully consistent with Flutter mobile and desktop, has faster performance with higher widget density, but adds about 2MB in download size.
+- **HTML renderer** - uses a combination of HTML elements, CSS, Canvas elements, and SVG elements. This renderer has a smaller download size.
+- **CanvasKit renderer** - this renderer is fully consistent with Flutter mobile and desktop, has faster performance with higher widget density, but adds about 2MB in download size.
 
 By default, Flet uses `CanvasKit` renderer for both desktop and mobile browsers.
 
@@ -373,20 +372,22 @@ You can explicitly set what renderer to use when running a Flet program:
 
 ```python
 # ...
-ft.app(target=main, view=ft.AppView.WEB_BROWSER, web_renderer=ft.WebRenderer.HTML)
+ft.app(main, view=ft.AppView.WEB_BROWSER, web_renderer=ft.WebRenderer.HTML)
 ```
 
 Now, when you run the same program you'll see "Consolas" font is used.
 
 Supported `web_renderer` values:
 
-* `canvaskit` (default) - prioritizing performance and pixel-perfect consistency on both desktop and mobile browsers.
-* `html` - optimizing download size over performance on both desktop and mobile browsers.
-* `auto` - optimizing for download size on mobile browsers and optimizing for performance on desktop browsers.
+- `canvaskit` (default) - prioritizing performance and pixel-perfect consistency on both desktop and mobile browsers.
+- `html` - optimizing download size over performance on both desktop and mobile browsers.
+- `auto` - optimizing for download size on mobile browsers and optimizing for performance on desktop browsers.
 
 ### `italic`
 
 `True` to use italic typeface.
+
+Value is of type `bool` and defaults to `False`.
 
 ### `max_lines`
 
@@ -400,26 +401,35 @@ If `False` (default) the text should break at soft line breaks.
 
 If `True`, the glyphs in the text will be positioned as if there was unlimited horizontal space.
 
+Value is of type `bool` and defaults to `False`.
+
 ### `overflow`
 
-Property value is `TextOverflow` enum with the following values:
+Controls how text overflows.
 
-* `FADE` (default)
-* `ELLIPSIS`
-* `CLIP`
-* `VISIBLE`
+Value is of type [`TextOverflow`](/docs/reference/types/textoverflow) and defaults to `TextOverflow.FADE`.
+
+### `rtl`
+
+`True` to set text direction to right-to-left.
+
+Defaults to `False`.
 
 ### `selectable`
 
-`True` if text should be selectable.
+Whether the text should be selectable.
+
+Defaults to `False`.
 
 ### `semantics_label`
 
 An alternative semantics label for this text.
 
-If present, the semantics of this control will contain this value instead of the actual text.
+If present, the semantics of this control will contain this value instead of the actual text. This will overwrite any of the `TextSpan.semantics_label`s.
 
 This is useful for replacing abbreviations or shorthands with the full text value:
+
+Value is of type `str`.
 
 ```python
 ft.Text("$$", semantics_label="Double dollars")
@@ -427,183 +437,41 @@ ft.Text("$$", semantics_label="Double dollars")
 
 ### `size`
 
-Text size in virtual pixels. Default is `14`.
+Text size in virtual pixels.
+
+Value is of type `OptionalNumber` and defaults to `14`.
 
 ### `spans`
 
-The list of [`ft.TextSpan`](#textspan-properties) objects to build a rich text paragraph.
+The list of [`TextSpan`](/docs/reference/types/textspan) objects to build a rich text paragraph.
 
 ### `style`
 
-Property value is `TextThemeStyle` enum with one of the following values:
+The text's style.
 
-* `DISPLAY_LARGE`
-* `DISPLAY_MEDIUM`
-* `DISPLAY_SMALL`
-* `HEADLINE_LARGE`
-* `HEADLINE_MEDIUM`
-* `HEADLINE_SMALL`
-* `TITLE_LARGE`
-* `TITLE_MEDIUM`
-* `TITLE_SMALL`
-* `LABEL_LARGE`
-* `LABEL_MEDIUM`
-* `LABEL_SMALL`
-* `BODY_LARGE`
-* `BODY_MEDIUM`
-* `BODY_SMALL`
+Value is of type [`TextStyle`](/docs/reference/types/textstyle).
 
 ### `text_align`
 
 Text horizontal align.
 
-Property value is `TextAlign` enum with the following values:
+Value is of type [`TextAlign`](/docs/reference/types/textalign) and defaults to `TextAlign.LEFT`.
 
-* `LEFT` (default)
-* `RIGHT`
-* `CENTER`
-* `JUSTIFY`
-* `START`
-* `END`
+### `theme_style`
+
+Pre-defined text style.
+
+Value is of type [`TextThemeStyle`](/docs/reference/types/textthemestyle).
 
 ### `value`
 
 The text displayed.
 
+Value is of type `str`.
+
 ### `weight`
 
 Font weight.
 
-Property value is `FontWeight` enum with the following values:
+Value is of type [`FontWeight`](/docs/reference/types/fontweight) and defaults to `FontWeight.NORMAL`.
 
-* `NORMAL` (default)
-* `BOLD`
-* `W_100`
-* `W_200`
-* `W_300`
-* `W_400`
-* `W_500`
-* `W_600`
-* `W_700`
-* `W_800`
-* `W_900`
-
-## `TextStyle` properties
-
-A style describing how to format and paint text.
-
-### `bgcolor`
-
-See [`Text.bgcolor`](#bgcolor).
-
-### `color`
-
-See [`Text.color`](#color).
-
-### `decoration`
-
-The decorations to paint near the text (e.g., an underline).
-
-The value is the instance of `ft.TextDecoration` enum:
-
-* `NONE` (default) - Do not draw a decoration.
-* `UNDERLINE` - Draw a line underneath each line of text.
-* `OVERLINE` - Draw a line above each line of text.
-* `LINE_THROUGH` - Draw a line through each line of text.
-
-The enum is a flag, so multiple decorations can be combined together, for example:
-
-```python
-style = ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE | ft.TextDecoration.OVERLINE)
-```
-
-### `decoration_color`
-
-The [color](/docs/guides/python/colors) in which to paint the text decorations.
-
-### `decoration_style`
-
-The style in which to paint the text decorations (e.g., dashed).
-
-The value is the instance of `ft.TextDecorationStyle` enum:
-
-* `SOLID` (default) - Draw a solid line.
-* `DOUBLE` - Draw two lines.
-* `DOTTED` - Draw a dotted line.
-* `DASHED` - Draw a dashed line.
-* `WAVY` - Draw a sinusoidal line.
-
-### `decoration_thickness`
-
-The thickness of the decoration stroke as a multiplier of the thickness defined by the font.
-
-### `font_family`
-
-See [`Text.font_family`](#font_family).
-
-### `foreground`
-
-The paint drawn as a foreground for the text.
-
-The value is of [`ft.Paint`](canvas#paint) class.
-
-### `italic`
-
-`True` to use italic typeface.
-
-### `shadow`
-
-See [`Container.shadow`](container#shadow).
-
-### `size`
-
-The size of glyphs (in logical pixels) to use when painting the text. Default is 14.
-
-### `weight`
-
-Font weight - see [Text.weight](#weight) for possible values.
-
-## `TextSpan` properties
-
-A span of text.
-
-### `spans`
-
-Additional spans to include as children.
-
-If both `text` and `spans` are defined, the `text` will precede the `spans`.
-
-### `style`
-
-The [`TextStyle`](#textstyle-properties) to apply to this span.
-
-### `text`
-
-The text contained in this span.
-
-If both `text` and `spans` are defined, the `text` will precede the `spans`.
-
-### `url`
-
-The URL to open when the span is clicked. If registered, `on_click` event is fired after that.
-
-### `url_target`
-
-Where to open URL in the web mode:
-
-* `_blank` (default) - new tab/window.
-* `_self` - the current tab/window.
-
-## `TextSpan` events
-
-### `on_click`
-
-Fires when the span is clicked.
-
-### `on_enter`
-
-Triggered when a mouse pointer has entered the span.
-
-### `on_exit`
-
-Triggered when a mouse pointer has exited the span.

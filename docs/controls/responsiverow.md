@@ -1,7 +1,6 @@
 ---
 title: ResponsiveRow
 sidebar_label: ResponsiveRow
-slug: responsiverow
 ---
 
 import Tabs from '@theme/Tabs';
@@ -49,6 +48,8 @@ ft.ResponsiveRow([
 ```
 
 ## Examples
+
+[Live example](https://flet-controls-gallery.fly.dev/layout/responsiverow)
 
 ### ResponsiveRow
 
@@ -109,7 +110,7 @@ def main(page: ft.Page):
     )
     page_resize(None)
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -120,41 +121,41 @@ ft.app(target=main)
 
 How the child Controls should be placed horizontally.
 
-For example, `MainAxisAlignment.START`, the default, places the children on the left of a Row.
-
-Property value is `MainAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `END`
-* `CENTER`
-* `SPACE_BETWEEN`
-* `SPACE_AROUND`
-* `SPACE_EVENLY`
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment) and defaults
+to `MainAxisAlignment.START`.
 
 ### `columns`
 
-The number of virtual columns to layout children. Default is 12.
+The number of virtual columns to layout children.
+
+Defaults to `12`.
 
 ### `controls`
 
 A list of Controls to display inside the ResponsiveRow.
 
+### `rtl`
+
+`True` to set text direction to right-to-left.
+
+Defaults to `False`.
+
 ### `run_spacing`
 
-Spacing between runs when row content is wrapped on multiple lines. Default value is 10.
+Spacing between runs when row content is wrapped on multiple lines.
+
+Defaults to `10`.
 
 ### `spacing`
 
-Spacing between controls in a row. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+Spacing between controls in a row in virtual pixels. It is applied only when `alignment` is set
+to `MainAxisAlignment.START`, `MainAxisAlignment.END` or `MainAxisAlignment.CENTER`.
+
+Defaults to `10`.
 
 ### `vertical_alignment`
 
 How the child Controls should be placed vertically.
 
-Property value is `CrossAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `CENTER`
-* `END`
-* `STRETCH`
-* `BASELINE`
+Value is of type [`CrossAxisAlignment`](/docs/reference/types/crossaxisalignment) and defaults
+to `CrossAxisAlignment.START`.

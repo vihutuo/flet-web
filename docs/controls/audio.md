@@ -1,7 +1,6 @@
 ---
 title: Audio
 sidebar_label: Audio
-slug: audio
 ---
 
 A control to simultaneously play multiple audio files. Works on macOS, Linux, Windows, iOS, Android and web.
@@ -9,10 +8,20 @@ Based on [audioplayers](https://pub.dev/packages/audioplayers) Flutter widget.
 
 Audio control is non-visual and should be added to `page.overlay` list.
 
+:::info Packaging
+To build your Flet app that uses `Audio` control add `--include-packages flet_audio` to `flet build` command, for example:
+
+```
+flet build apk --include-packages flet_audio
+```
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Examples
+
+[Live example](https://flet-controls-gallery.fly.dev/utility/audio)
 
 ### Autoplay audio
 
@@ -36,7 +45,7 @@ def main(page: ft.Page):
         ft.ElevatedButton("Stop playing", on_click=lambda _: audio1.pause()),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -107,7 +116,7 @@ def main(page: ft.Page):
         ),
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -117,6 +126,8 @@ ft.app(target=main)
 ### `autoplay`
 
 Starts playing audio as soon as audio control is added to a page.
+
+Value is of type `bool` and defaults to `False`.
 
 :::note
 Autoplay works in desktop, mobile apps and Safari browser, but doesn't work in Chrome/Edge.
@@ -128,9 +139,47 @@ Sets the stereo balance.
 
 -1 - The left channel is at full volume; the right channel is silent. 1 - The right channel is at full volume; the left channel is silent. 0 - Both channels are at the same volume.
 
+Value is of type [`OptionalNumber`](/docs/reference/types/aliases#optionalnumber).
+
 :::note
 Setting balance is supported on Windows and Linux only.
 :::
+
+### `playback_rate`
+
+Sets the playback rate. iOS and macOS have limits between 0.5 and 2x Android SDK version should be 23 or higher.
+
+Value is of type [`OptionalNumber`](/docs/reference/types/aliases#optionalnumber).
+
+### `release_mode`
+
+Sets the release mode.
+
+Value is of type [`ReleaseMode`](/docs/reference/types/releasemode) and defaults to `ReleaseMode.RELEASE`.
+
+### `src`
+
+Sets the URL to the audio file. It could be an asset URL, see [`Image.src`](/docs/controls/image#src) for more information about assets.
+
+:::note
+[Here](https://github.com/bluefireteam/audioplayers/blob/main/troubleshooting.md#supported-formats--encodings) is a list of supported audio formats.
+:::
+
+### `src_base64`
+
+Sets the contents of audio file encoded in base-64 format.
+
+Value is of type `str`.
+
+### `volume`
+
+Sets the volume (amplitude).
+
+0 is mute and 1 is the max volume. The values between 0 and 1 are linearly interpolated.
+
+Value is of type [`OptionalNumber`](/docs/reference/types/aliases#optionalnumber).
+
+## Methods
 
 ### `get_current_position()`
 
@@ -139,28 +188,6 @@ Returns the current position in milliseconds.
 ### `get_duration()`
 
 Returns the duration of audio in milliseconds.
-
-### `playback_rate`
-
-Sets the playback rate. iOS and macOS have limits between 0.5 and 2x Android SDK version should be 23 or higher.
-
-### `release_mode`
-
-Sets the release mode. The following values are supported:
-
-* `ReleaseMode.RELEASE` (default) - Releases all resources, just like calling `release()` method. In Android, the media player is quite resource-intensive, and this will let it go. Data will be buffered again when needed (if it's a remote file, it will be downloaded again). In iOS and macOS, works just like `stop()` method.
-* `ReleaseMode.LOOP` - Keeps buffered data and plays again after completion, creating a loop. Notice that calling stop method is not enough to release the resources when this mode is being used.
-* `ReleaseMode.STOP` - Stops audio playback but keep all resources intact. Use this if you intend to play again later.
-
-### `src`
-
-Sets the URL to the audio file. It could be an asset URL, see [Image.src](/docs/controls/image#src) for more information about assets.
-
-### `src_base64`
-
-Sets the contents of audio file encoded in base-64 format.
-
-## Methods
 
 ### `pause()`
 
@@ -187,19 +214,13 @@ Method arguments:
 
 * `position_milliseconds` - desired position in milliseconds.
 
-### `volume`
-
-Sets the volume (amplitude).
-
-0 is mute and 1 is the max volume. The values between 0 and 1 are linearly interpolated.
-
 ## Events
 
 ### `on_duration_changed`
 
 Fires as soon as audio duration is available (it might take a while to download or buffer it).
 
-Event's `e.data` contains audio duration in milliseconds.
+Event handler argument is of type [`AudioDurationChangeEvent`](/docs/reference/types/audiodurationchangeevent).
 
 ### `on_loaded`
 
@@ -209,16 +230,14 @@ Fires when an audio is loaded/buffered.
 
 Fires when audio position is changed. Will continuously update the position of the playback every 1 second if the status is playing. Can be used for a progress bar.
 
+Event handler argument is of type [`AudioPositionChangeEvent`](/docs/reference/types/audiopositionchangeevent).
+
 ### `on_seek_complete`
 
 Fires on seek completions. An event is going to be sent as soon as the audio seek is finished.
 
 ### `on_state_changed`
 
-Fires when audio player state changes. Event's `e.data` contains one of the following states:
+Fires when audio player state changes. 
 
-* `stopped`
-* `playing`
-* `paused`
-* `completed`
-* `disposed` 
+Event handler argument is of type [`AudioStateChangeEvent`](/docs/reference/types/audiostatechangeevent).

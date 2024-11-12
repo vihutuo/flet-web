@@ -1,7 +1,6 @@
 ---
 title: MatplotlibChart
 sidebar_label: MatplotlibChart
-slug: matplotlibchart
 ---
 
 Displays [Matplotlib](https://matplotlib.org/) chart.
@@ -42,7 +41,7 @@ def main(page: ft.Page):
     page.add(MatplotlibChart(fig, expand=True))
 
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### Line chart
@@ -89,7 +88,7 @@ def main(page: ft.Page):
 
     page.add(MatplotlibChart(fig, expand=True))
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ## Properties
@@ -123,13 +122,17 @@ def main(page: ft.Page):
     ax.legend(title="Colors")
     chart1.update()
 
-ft.app(target=main)
+ft.app(main)
 ```
 
 ### `original_size`
 
-`True` to display chart in original size. `False` (default) to display a chart that fits configured bounds.
+Whether to display chart in original size.
+
+Defaults to `False` - display a chart that fits configured bounds.
 
 ### `transparent`
 
-`True` to remove the background from the chart. `False` (default) to display a chart with background.
+Whether to remove the background from the chart.
+
+Defaults to `False` - display a chart with background.

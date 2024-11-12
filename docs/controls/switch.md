@@ -1,7 +1,6 @@
 ---
 title: Switch
 sidebar_label: Switch
-slug: switch
 ---
 
 A toggle represents a physical switch that allows someone to choose between two mutually exclusive options.
@@ -40,7 +39,7 @@ def main(page):
     b = ft.ElevatedButton(text="Submit", on_click=button_clicked)
     page.add(c1, c2, c3, c4, b, t)
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+ft.app(main, view=ft.AppView.WEB_BROWSER)
 ```
   </TabItem>
 </Tabs>
@@ -71,7 +70,7 @@ def main(page: ft.Page):
     c = ft.Switch(label="Light theme", on_change=theme_changed)
     page.add(c)
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -82,27 +81,44 @@ ft.app(target=main)
 
 ### `active_color`
 
-The [color](/docs/guides/python/colors) to use when this switch is on.
+The [color](/docs/reference/colors) to use when this switch is on.
 
 ### `active_track_color`
 
-The [color](/docs/guides/python/colors) to use on the track when this switch is on.
+The [color](/docs/reference/colors) to use on the track when this switch is on.
 
 If `track_color` returns a non-null color in the `selected` state, it will be used instead of this color.
+
+### `adaptive`
+
+If the value is `True`, an adaptive Switch is created based on whether the target platform is iOS/macOS.
+
+On iOS and macOS, a `CupertinoSwitch` is created, which has matching functionality and presentation as `Switch`, and the graphics as expected on iOS. On other platforms, a Material Switch is created.
+
+Defaults to `False`. See the example of
+usage [here](/docs/controls/cupertinoswitch#cupertinoswitch-and-adaptive-switch).
 
 ### `autofocus`
 
 True if the control will be selected as the initial focus. If there is more than one control on a page with autofocus set, then the first one added to the page will get focus.
 
+### `focus_color`
+
+The [color](/docs/reference/colors) to use for the focus highlight for keyboard interactions.
+
+### `hover_color`
+
+The [color](/docs/reference/colors) to be used when it is being hovered over by the mouse pointer.
+
 ### `inactive_thumb_color`
 
-The [color](/docs/guides/python/colors) to use on the thumb when this switch is off.
+The [color](/docs/reference/colors) to use on the thumb when this switch is off.
 
 If `thumb_color` returns a non-null color in the default state, it will be used instead of this color.
 
 ### `inactive_track_color`
 
-The [color](/docs/guides/python/colors) to use on the track when this switch is off.
+The [color](/docs/reference/colors) to use on the track when this switch is off.
 
 If `track_color` returns a non-null color in the default state, it will be used instead of this color.
 
@@ -110,49 +126,58 @@ If `track_color` returns a non-null color in the default state, it will be used 
 
 The clickable label to display on the right of the Switch.
 
+### `label_style`
+
+The label's style.
+
+Value is of type [`TextStyle`](/docs/reference/types/textstyle).
+
 ### `label_position`
 
-Property value is `LabelPosition` enum with `LabelPosition.RIGHT` as default.
+Value is of type [`LabelPosition`](/docs/reference/types/labelposition) and defaults to `LabelPosition.RIGHT`.
+
+### `mouse_cursor`
+
+The cursor to be displayed when a mouse pointer enters or is hovering over this control.
+The value is [`MouseCursor`](/docs/reference/types/mousecursor) enum.
+
+### `overlay_color`
+
+The [color](/docs/reference/colors) for the switch's Material in
+various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are
+supported: `PRESSED`, `SELECTED`, `HOVERED`, `FOCUSED` and `DEFAULT`.
+
+### `splash_radius`
+
+The radius of the splash effect when the switch is pressed.
 
 ### `thumb_color`
 
-The [color](/docs/guides/python/colors) of this Switch's thumb.
+The [color](/docs/reference/colors) of this switch's thumb in
+various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are
+supported: `SELECTED`, `HOVERED`, `DISABLED`, `FOCUSED` and `DEFAULT` (fallback).
 
-Resolved in the following `MaterialState` states:
+### `thumb_icon`
 
-* `SELECTED`
-* `HOVERED`
-* `FOCUSED`
-* `DISABLED`
-* `DEFAULT` - fallback state, meaning "all other states".
-
-To configure thumb color for all Material states set `thumb_color` value to a literal, for example:
-
-```python
-sw.thumb_color=ft.colors.GREEN
-```
-
-To configure thumb color for specific Material states set its value to a dictionary where the key is state name. For example, to configure different fill colors for `HOVERED` and `FOCUSED` states and another color for all other states:
-
-```python
-sw.thumb_color={
-    ft.MaterialState.HOVERED: ft.colors.GREEN,
-    ft.MaterialState.FOCUSED: ft.colors.RED,
-    ft.MaterialState.DEFAULT: ft.colors.BLACK,
-}
-```
+The icon of this Switch's thumb in various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are
+supported: `SELECTED`, `HOVERED`, `DISABLED`, `FOCUSED` and `DEFAULT` (fallback).
 
 ### `track_color`
 
-The [color](/docs/guides/python/colors) of this Switch's track.
+The [color](/docs/reference/colors) of this switch's track in
+various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are
+supported: `SELECTED`, `HOVERED`, `DISABLED`, `FOCUSED` and `DEFAULT` (fallback).
 
-Resolved in the following `MaterialState` states:
+### `track_outline_color`
 
-* `SELECTED`
-* `HOVERED`
-* `FOCUSED`
-* `DISABLED`
-* `DEFAULT` - fallback state, meaning "all other states".
+The outline [color](/docs/reference/colors) of this switch's track in
+various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are
+supported: `SELECTED`, `HOVERED`, `DISABLED`, `FOCUSED` and `DEFAULT` (fallback).
 
 ### `value`
 

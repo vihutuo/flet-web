@@ -54,7 +54,7 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#lineargradient) docs for more information about `LinearGradient` properties.
+Check [`LinearGradient`](/docs/reference/types/lineargradient) docs for more information about `LinearGradient` properties.
 
 ### Radial gradient
 
@@ -86,7 +86,7 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#radialgradient) docs for more information about `RadialGradient` properties.
+Check [`RadialGradient`](/docs/reference/types/radialgradient) docs for more information about `RadialGradient` properties.
 
 ### Sweep gradient
 
@@ -123,12 +123,12 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#sweepgradient) docs for more information about `SweepGradient` properties.
+Check [`SweepGradient`](/docs/reference/types/sweepgradient) docs for more information about `SweepGradient` properties.
 
 ## Buttons styling
 
 This Flet release introduces `style` property to all button controls which is an instance of `ButtonStyle` class.
-`ButtonStyle` allows controling all visual aspects of a button, such as shape, foreground, background and shadow colors, content padding, border width and radius!
+`ButtonStyle` allows controlling all visual aspects of a button, such as shape, foreground, background and shadow colors, content padding, border width and radius!
 
 Moreover, each individual style attribute could be configured for a different "Material states" of a button, such as "hovered", "focused", "disabled" and others. For example, you can configure a different shape, background color for a hovered state and configure fallback values for all other states.
 
@@ -322,4 +322,4 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-[Give Flet a try](/docs/guides/python/getting-started) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
+[Give Flet a try](/docs) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!

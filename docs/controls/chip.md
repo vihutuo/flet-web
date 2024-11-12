@@ -1,7 +1,6 @@
 ---
 title: Chip
 sidebar_label: Chip
-slug: chip
 ---
 
 Chips are compact elements that represent an attribute, text, entity, or action.
@@ -57,7 +56,7 @@ def main(page: ft.Page):
 
     page.add(ft.Row([save_to_favourites, open_in_maps]))
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -95,7 +94,7 @@ def main(page: ft.Page):
 
     page.add(title, ft.Row(amenity_chips))
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -111,11 +110,32 @@ True if the control will be selected as the initial focus. If there is more than
 
 ### `bgcolor`
 
-[Color](/docs/guides/python/colors) to be used for the unselected, enabled chip's background.
+[Color](/docs/reference/colors) to be used for the unselected, enabled chip's background.
+
+### `border_side`
+
+Defines the color and weight of the chip's outline. Value is the instance of [`BorderSide`](/docs/reference/types/borderside) class.
 
 ### `check_color`
 
-[Color](/docs/guides/python/colors) of the chip's check mark when a check mark is visible.
+[Color](/docs/reference/colors) of the chip's check mark when a check mark is visible.
+
+### `click_elevation`
+
+A non-negative value which defines the elevation of the chip when clicked/pressed.
+
+Defaults to `8.0`.
+
+### `clip_behavior`
+
+The content will be clipped (or not) according to this option.
+
+Value is of type [`ClipBehavior`](/docs/reference/types/clipbehavior) and defaults to `ClipBehavior.NONE`.
+
+### `color`
+
+The [color](/docs/reference/colors) that fills the chip in various [`ControlState`](/docs/reference/types/controlstate)
+s.
 
 ### `delete_icon_tooltip`
 
@@ -123,85 +143,101 @@ The text to be used for the chip's `delete_icon` tooltip. If not provided or pro
 
 ### `delete_icon`
 
-A `Control` to display to the right of the chip's `label` in case `on_delete` event is specified. Defaults to an [Icon](icon) set to use `ft.icons.CANCEL`.
+A `Control` to display to the right of the chip's `label` in case `on_delete` event is specified.
+
+Defaults to an [`Icon(icons.CANCEL)`](/docs/controls/icon).
 
 ### `delete_icon_color`
 
-[Color](/docs/guides/python/colors) of the `delete_icon`.
+[Color](/docs/reference/colors) of the `delete_icon`.
 
 ### `disabled_color`
 
-The [color](/docs/guides/python/colors) used for the chip's background if it is disabled.
+The [color](/docs/reference/colors) used for the chip's background if it is disabled.
 
 ### `elevation`
 
-Specify elevation to change the size of the shadow below the chip. Defaults to 0. The value is always non-negative.
+A non-negative value which defines the size of the shadow below the chip.
+
+Defaults to `0`.
 
 ### `label`
 
-A `Control` that represents primary content of the chip, typically a [Text](text). Label is a required property.
+A `Control` that represents primary content of the chip, typically a [`Text`](/docs/controls/text). Label is a required
+property.
 
 ### `label_padding`
 
 Padding around the `label`.
 
-By default, this is 4 logical pixels at the beginning and the end of the label, and zero on top and bottom.
+The value is an instance of [`padding.Padding`](/docs/reference/types/padding) class or a number.
 
-See [`Container.padding`](container#padding) for more information about padding and possible values.
+By default, this is 4 logical pixels at the beginning and the end of the label, and zero on top and bottom.
 
 ### `label_style`
 
-The style to be applied to the chip's `label`. See [`Text.textstyle`](text#textstyle-properties) for more information about `TextStyle` and possible values.
+The style to be applied to the chip's `label`.
+
+Value is of type [`TextStyle`](/docs/reference/types/textstyle).
 
 ### `leading`
 
 A `Control` to display to the left of the chip's `label`.
 
-Typically the leading control is an [`Icon`](icon) or a [`CircleAvatar`](circleavatar).
+Typically the leading control is an [`Icon`](/docs/controls/icon) or a [`CircleAvatar`](/docs/controls/circleavatar).
 
 ### `padding`
 
 The padding between the `label` and the outside shape.
 
-By default, this is 4 logical pixels on all sides.
+The value is an instance of [`Padding`](/docs/reference/types/padding) class or a number.
 
-See [`Container.padding`](container#padding) for more information about padding and possible values.
+By default, this is 4 logical pixels on all sides.
 
 ### `selected`
 
-If `on_select` event is specified, `selected` property is used to determine wheather the chip is selected or not. Defaults to `False`.
+If `on_select` event is specified, `selected` property is used to determine whether the chip is selected or not.
+
+Defaults to `False`.
 
 ### `selected_color`
 
-The [color](/docs/guides/python/colors) used for the chip's background when it is selected.
+The [color](/docs/reference/colors) used for the chip's background when it is selected.
 
 ### `selected_shadow_color`
 
-The [color](/docs/guides/python/colors) used for the chip's background when the elevation is greater than 0 and the chip is selected.
+The [color](/docs/reference/colors) used for the chip's background when the elevation is greater than `0` and the chip
+is selected.
 
 ### `shadow_color`
 
-The [color](/docs/guides/python/colors) used for the chip's background when the elevation is greater than 0 and the chip is not selected.
+The [color](/docs/reference/colors) used for the chip's background when the elevation is greater than `0` and the chip
+is not selected.
 
 ### `shape`
 
 The shape of the border around the chip.
 
-The value is an instance of one of the following implementations:
-  * `StadiumBorder`
-  * `RoundedRectangleBorder`
-    * `radius` - border radius, an instance of `BorderRadius` class or a number.
-  * `CircleBorder`
-  * `BeveledRectangleBorder`
-    * `radius` - border radius, an instance of `BorderRadius` class or a number.
-  * `ContinuousRectangleBorder`
-    * `radius` - border radius, an instance of `BorderRadius` class or a number.
+The value is an instance of [`OutlinedBorder`](/docs/reference/types/outlinedborder) class.
 
 The default shape is a `StadiumBorder`.
 
 ### `show_checkmark`
 
-If `on_select` event is specified and chip is selected, `show_checkmark` is used to determine wheather or not to show a checkmark. Defaults to `True`.
+If `on_select` event is specified and chip is selected, `show_checkmark` is used to determine whether or not to show a
+checkmark.
+
+Defaults to `True`.
+
+### `surface_tint_color`
+
+The [color](/docs/reference/colors) used as an overlay on `bgcolor` to indicate elevation.
+
+### `visual_density`
+
+Defines how compact the control's layout will be.
+
+Value is of type [`ThemeVisualDensity`](/docs/reference/types/themevisualdensity).
 
 ## Events
 

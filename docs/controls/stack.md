@@ -1,14 +1,13 @@
 ---
 title: Stack
 sidebar_label: Stack
-slug: stack
 ---
 
 A control that positions its children on top of each other.
 
 This control is useful if you want to overlap several children in a simple way, for example having some text and an image, overlaid with a gradient and a button attached to the bottom.
 
-Stack is also useful if you want to implement [implicit animations](/docs/guides/python/animations) that require knowing absolute position of a target value.
+Stack is also useful if you want to implement [implicit animations](/docs/cookbook/animations) that require knowing absolute position of a target value.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -55,7 +54,7 @@ def main(page: ft.Page):
 
     page.add(st)
 
-ft.app(target=main)
+ft.app(main)
 ```
 
   </TabItem>
@@ -88,7 +87,7 @@ def main(page):
         )
     )
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+ft.app(main, view=ft.AppView.WEB_BROWSER)
 ```
 
   </TabItem>
@@ -159,7 +158,7 @@ def main(page: ft.Page):
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
   </TabItem>
@@ -167,17 +166,22 @@ ft.app(target=main)
 
 ## Properties
 
+### `alignment`
+
+The alignment of the non-positioned (those that do not specify an alignment - ex neither top nor bottom - in a particular axis and partially-positioned `controls`.
+
 ### `clip_behavior`
 
 The content will be clipped (or not) according to this option.
 
-Property value is `ClipBehavior` enum with supported values:
-
-* `NONE`
-* `ANTI_ALIAS`
-* `ANTI_ALIAS_WITH_SAVE_LAYER`
-* `HARD_EDGE` (default)
+Value is of type [`ClipBehavior`](/docs/reference/types/clipbehavior) and defaults to `ClipBehavior.HARD_EDGE`.
 
 ### `controls`
 
 A list of Controls to display inside the Stack. The last control in the list is displayed on top.
+
+### `fit`
+
+How to size the non-positioned `controls`.
+
+Value is of type [`StackFit`](/docs/reference/types/stackfit) and defaults to `StackFit.LOOSE`.

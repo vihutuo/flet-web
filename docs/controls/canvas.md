@@ -1,7 +1,6 @@
 ---
 title: Canvas
 sidebar_label: Canvas
-slug: canvas
 ---
 
 Canvas is a control for drawing arbitrary graphics using a set of primitives or "shapes" such as line, arc, path and text.
@@ -311,7 +310,9 @@ ft.app(main)
 
 ### `resize_interval`
 
-Sampling interval in milliseconds for `on_resize` event. Default is `0` - call `on_resize` on every change.
+Sampling interval in milliseconds for `on_resize` event.
+
+Defaults to `0` - call `on_resize` immediately on every change.
 
 ### `shapes`
 
@@ -323,10 +324,7 @@ The list of `Shape` objects (see below) to draw on the canvas.
 
 Fires when the size of canvas has changed.
 
-Event object `e` is an instance of `CanvasResizeEvent` class with the following fields:
-
-* `width` - a new width of the canvas.
-* `height` - a new height of the canvas.
+Event object `e` is an instance of [`CanvasResizeEvent`](/docs/reference/types/canvasresizeevent).
 
 ## `Arc` shape properties
 
@@ -336,21 +334,13 @@ It starts from `start_angle` radians around the oval up to `start_angle` + `swee
 
 [PICTURE] - https://api.flutter.dev/flutter/dart-ui/Canvas/drawArc.html
 
-### `x`
-
-The x-axis coordinate of the arc's top left point.
-
-### `y`
-
-The y-axis coordinate of the arc's top left point.
-
-### `width`
-
-Width of the rectangle containing the arc's oval.
-
 ### `height`
 
 Height of the rectangle containing the arc's oval.
+
+### `paint`
+
+A style to draw an arc with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint) class.
 
 ### `start_angle`
 
@@ -364,13 +354,30 @@ The length of the arc in radians.
 
 If `use_center` is `True`, the arc is closed back to the center, forming a circle sector. Otherwise, the arc is not closed, forming a circle segment.
 
-### `paint`
+### `width`
 
-A style to draw an arc with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
+Width of the rectangle containing the arc's oval.
+
+### `x`
+
+The x-axis coordinate of the arc's top left point.
+
+### `y`
+
+The y-axis coordinate of the arc's top left point.
 
 ## `Circle` shape properties
 
 Draws a circle.
+
+### `paint`
+
+A style to draw a circle with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint)
+class.
+
+### `radius`
+
+Circle's radius.
 
 ### `x`
 
@@ -380,27 +387,19 @@ The x-axis coordinate of the circle's center point.
 
 The y-axis coordinate of the circle's center point.
 
-### `radius`
-
-Circle's radius.
-
-### `paint`
-
-A style to draw a circle with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
-
 ## `Color` shape properties
 
 Paints the given `color` onto the canvas, applying the given `blend_mode`, with the given color being the source and the background being the destination.
-
-### `color`
-
-[Color](/docs/guides/python/colors) to paint onto the canvas.
 
 ### `blend_mode`
 
 Blend mode to apply.
 
-See [`ShaderMask.blend_mode`](shadermask#blend_mode) for possible blend mode values.
+Value is of type [`BlendMode`](/docs/reference/types/blendmode).
+
+### `color`
+
+[Color](/docs/reference/colors) to paint onto the canvas.
 
 ## `Fill` shape properties
 
@@ -410,11 +409,15 @@ To fill the canvas with a solid color and blend mode, consider `Color` shape ins
 
 ### `paint`
 
-A style to fill the canvas with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
+A style to fill the canvas with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint) class.
 
 ## `Line` shape properties
 
 Draws a line between the given points using the given paint. The line is stroked, the value of the `Paint.style` is ignored.
+
+### `paint`
+
+A style to draw a line with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint) class.
 
 ### `x1`
 
@@ -432,13 +435,22 @@ The x-axis coordinate of the line's end point.
 
 The y-axis coordinate of the line's end point.
 
-### `paint`
-
-A style to draw a line with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
-
 ## `Oval` shape properties
 
 Draws an axis-aligned oval that fills the given axis-aligned rectangle with the given `Paint`. Whether the oval is filled or stroked (or both) is controlled by `Paint.style`.
+
+### `height`
+
+Height of the rectangle containing the oval.
+
+### `paint`
+
+A style to draw an oval with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint)
+class.
+
+### `width`
+
+Width of the rectangle containing the oval.
 
 ### `x`
 
@@ -447,18 +459,6 @@ The x-axis coordinate of the oval's top left point.
 ### `y`
 
 The y-axis coordinate of the oval's top left point.
-
-### `width`
-
-Width of the rectangle containing the oval.
-
-### `height`
-
-Height of the rectangle containing the oval.
-
-### `paint`
-
-A style to draw an oval with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
 
 ## `Path` shape properties
 
@@ -516,11 +516,15 @@ Closes the last sub-path, as if a straight line had been drawn from the current 
 
 ### `paint`
 
-A style to draw a path with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
+A style to draw a path with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint) class.
 
 ## `Points` shape properties
 
 Draws a sequence of points according to the given `point_mode`.
+
+### `paint`
+
+A style to draw points with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint) class.
 
 ### `points`
 
@@ -528,19 +532,32 @@ The list of `ft.Offset` describing points.
 
 ### `point_mode`
 
-Defines how a list of points is interpreted when drawing a set of points. The value is of type `ft.PointMode`:
+Defines how a list of points is interpreted when drawing a set of points.
 
-* `POINTS` - Draw each point separately. If the `Paint.stroke_cap` is `StrokeCap.ROUND`, then each point is drawn as a circle with the diameter of the `Paint.stroke_width`, filled as described by the `Paint` (ignoring `Paint.style`). Otherwise, each point is drawn as an axis-aligned square with sides of length `Paint.stroke_width`, filled as described by the `Paint` (ignoring `Paint.style`).`
-* `LINES` - Draw each sequence of two points as a line segment. If the number of points is odd, then the last point is ignored. The lines are stroked as described by the `Paint` (ignoring `Paint.style`).
-* `POLYGON` - Draw the entire sequence of point as one line. The lines are stroked as described by the `Paint` (ignoring `Paint.style`).
-
-### `paint`
-
-A style to draw points with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
+Value is of type [`PointMode`](/docs/reference/types/pointmode).
 
 ## `Rect` shape properties
 
 Draws a rectangle.
+
+### `border_radius`
+
+Border radius of the rectangle.
+
+Value is of type [`BorderRadius`](/docs/reference/types/borderradius).
+
+### `height`
+
+Height of the rectangle.
+
+### `paint`
+
+A style to draw a rectangle with. The value of this property is the instance of [`Paint`](/docs/reference/types/paint)
+class.
+
+### `width`
+
+Width of the rectangle.
 
 ### `x`
 
@@ -550,47 +567,78 @@ The x-axis coordinate of the rectangle's top left point.
 
 The y-axis coordinate of the rectangle's top left point.
 
-### `width`
-
-Width of the rectangle.
-
-### `height`
-
-Height of the rectangle.
-
-### `border_radius`
-
-Border radius of the rectangle, value of type `ft.BorderRadius`.
-
-### `paint`
-
-A style to draw a rectangle with. The value of this property is the instance of [`ft.Paint`](#paint-properties).
-
 ## `Shadow` shape properties
 
 Draws a shadow for a `path` representing the given material `elevation`.
 
 The `transparent_occluder` argument should be `True` if the occluding object is not opaque.
 
-### `path`
-
-The list of `Path.PathElement` objects describing the path.
-
 ### `color`
 
-Shadow [color](/docs/guides/python/colors).
+Shadow [color](/docs/reference/colors).
 
 ### `elevation`
 
 Shadow elevation.
 
+### `path`
+
+The list of `Path.PathElement` objects describing the path.
+
 ### `transparent_occluder`
 
-`True` if the occluding object is not opaque. Default is `False`.
+`True` if the occluding object is not opaque.
+
+Defaults to `False`.
 
 ## `Text` shape properties
 
 Draws `text` with `style` in the given point (`x`, `y`).
+
+### `alignment`
+
+A point within a text rectangle to determine its position and rotation center.
+
+Value is of type [`Alignment`](/docs/reference/types/alignment) and defaults to `alignment.top_left`.
+
+### `ellipsis`
+
+String used to ellipsize overflowing text.
+
+### `max_lines`
+
+The maximum number of lines painted. Lines beyond this number are silently dropped. For example, if `max_lines = 1`,
+then only one line is rendered. If `max_lines = None`, but `ellipsis != None`, then lines after the first one that
+overflows the width constraints are dropped.
+
+### `max_width`
+
+The maximum width of the painted text.
+
+Defaults to `None` - infinity.
+
+### `rotate`
+
+Text rotation in radians. Text is rotated around the point determined by `alignment`. See code examples above.
+
+### `spans`
+
+The list of [`TextSpan`](/docs/reference/types/textspan) objects to build a rich text paragraph.
+
+### `style`
+
+A text style to draw `text` and `spans` with. The value is the instance
+of [`TextStyle`](/docs/reference/types/textstyle) class.
+
+### `text`
+
+The text to draw.
+
+### `text_align`
+
+Text horizontal align.
+
+Value is of type [`TextAlign`](/docs/reference/types/textalign) and defaults to `TextAlign.LEFT`.
 
 ### `x`
 
@@ -599,243 +647,3 @@ The x-axis coordinate of the text's `alignment` point.
 ### `y`
 
 The y-axis coordinate of the text's `alignment` point.
-
-### `text`
-
-The text to draw.
-
-### `style`
-
-A text style to draw `text` and `spans` with. The value is the instance of [`ft.TextStyle`](text#textstyle-properties) class.
-
-### `spans`
-
-The list of [`ft.TextSpan`](text#textspan-properties) objects to build a rich text paragraph.
-
-### `alignment`
-
-A point within a text rectangle to determine its position and rotation center.
-
-The value is of type `ft.Alignment`. Default value is `ft.alignment.top_left`.
-
-### `text_align`
-
-Text horizontal align. See [`Text.text_align`](text#text_align) property for supported values.
-
-### `max_lines`
-
-The maximum number of lines painted. Lines beyond this number are silently dropped. For example, if maxLines is 1, then only one line is rendered. If `max_lines` is `None`, but ellipsis is not `None`, then lines after the first one that overflows the width constraints are dropped.
-
-### `max_width`
-
-The maximum width of the painted text. Default is `None` - infinity.
-
-### `ellipsis`
-
-String used to ellipsize overflowing text.
-
-### `rotate`
-
-Text rotation in radians. Text is rotated around the point determined by `alignment`. See code examples above.
-
-## `Paint` properties
-
-A description of the style to use when drawing a shape on the canvas.
-
-### `anti_alias`
-
-Whether to apply anti-aliasing to lines and images drawn on the canvas. Defaults to `True`.
-
-### `blend_mode`
-
-:::note
-The property is not yet implemented and reserved for future use.
-:::
-
-A blend mode to apply when a shape is drawn or a layer is composited.
-
-Defaults to `BlendMode.SRC_OVER`.
-
-See [`ShaderMask.blend_mode`](shadermask#blend_mode) for possible blend mode values.
-
-### `blur_image`
-
-:::note
-The property is not yet implemented and reserved for future use.
-:::
-
-Blur image when drawing it on a canvas.
-
-See [`Container.blur`](container#blur) for more information.
-
-### `color`
-
-The [color](/docs/guides/python/colors) to use when stroking or filling a shape. Defaults to opaque black.
-
-### `gradient`
-
-Configures gradient paint. The value is an instance of one of the following classes:
-
-* `PaintLinearGradient`
-* `PaintRadialGradient`
-* `PaintSweepGradient`
-
-#### `PaintLinearGradient`
-
-<img src="/img/docs/controls/canvas/paint-linear-gradient.png" className="screenshot-20" />
-
-```python
-cv.Rect(
-    10,
-    10,
-    100,
-    100,
-    5,
-    ft.Paint(
-        gradient=ft.PaintLinearGradient(
-            (0, 10), (0, 100), colors=[ft.colors.BLUE, ft.colors.YELLOW]
-        ),
-        style=ft.PaintingStyle.FILL,
-    ),
-)
-```
-
-`PaintLinearGradient` class has the following properties:
-
-* `begin` - An instance of `Offset` class. The offset at which stop 0.0 of the gradient is placed.
-* `end` - An instance of `Offset` class. The offset at which stop 1.0 of the gradient is placed.
-* `colors` - The colors the gradient should obtain at each of the stops. If stops is non-null, this list must have the same length as stops. This list must have at least two colors in it (otherwise, it's not a gradient!).
-* `stops` - A list of values from 0.0 to 1.0 that denote fractions along the gradient. If non-null, this list must have the same length as `colors`. If the first value is not 0.0, then a stop with position 0.0 and a color equal to the first color in `colors` is implied. If the last value is not 1.0, then a stop with position 1.0 and a color equal to the last color in `colors` is implied.
-* `tile_mode` - How this gradient should tile the plane beyond in the region before `begin` and after `end`. The value is `GradientTileMode` enum with supported values: `CLAMP` (default), `DECAL`, `MIRROR`, `REPEATED`. More info [here](https://api.flutter.dev/flutter/dart-ui/TileMode.html).
-* `rotation` - rotation for the gradient, in [radians](https://en.wikipedia.org/wiki/Radian), around the center-point of its bounding box.
-
-More information:
-
-* [Linear gradient](https://api.flutter.dev/flutter/dart-ui/Gradient/Gradient.linear.html) in Flutter documentation.
-* [Radian measuring unit](https://en.wikipedia.org/wiki/Radian) on Wikipedia.
-
-#### `PaintRadialGradient`
-
-<img src="/img/docs/controls/canvas/paint-radial-gradient.png" className="screenshot-20" />
-
-```python
-cv.Circle(
-    60,
-    170,
-    50,
-    ft.Paint(
-        gradient=ft.PaintRadialGradient(
-            (60, 170), 50, colors=[ft.colors.YELLOW, ft.colors.BLUE]
-        ),
-        style=ft.PaintingStyle.FILL,
-    ),
-)
-```
-
-`PaintRadialGradient` class has the following properties:
-
-* `center` - An instance of `Offset` class. The center of the gradient.
-* `radius` - The radius of the gradient.
-* `colors`, `stops`, `tile_mode`, `rotation` - see [Linear gradient](#paintlineargradient) for description of these properties.
-* `focal` - The focal point of the gradient. If specified, the gradient will appear to be focused along the vector from `center` to focal.
-* `focal_radius` - The radius of the focal point of gradient, as a fraction of the shortest side of the paint box. For example, if a radial gradient is painted on a box that is 100.0 pixels wide and 200.0 pixels tall, then a radius of 1.0 will place the 1.0 stop at 100.0 pixels from the focal point.
-
-More information:
-
-* [Radial gradient](https://api.flutter.dev/flutter/dart-ui/Gradient/Gradient.radial.html) in Flutter documentation.
-
-#### `PaintSweepGradient`
-
-<img src="/img/docs/controls/canvas/paint-sweep-gradient.png" className="screenshot-20" />
-
-```python
-cv.Path(
-    [
-        cv.Path.MoveTo(60, 230),
-        cv.Path.LineTo(110, 330),
-        cv.Path.LineTo(10, 330),
-        cv.Path.Close(),
-    ],
-    ft.Paint(
-        gradient=ft.PaintSweepGradient(
-            (60, 280),
-            colors=[ft.colors.YELLOW, ft.colors.BLUE],
-            start_angle=0,
-            end_angle=math.pi * 2,
-        ),
-        stroke_width=5,
-        stroke_join=ft.StrokeJoin.ROUND,
-        style=ft.PaintingStyle.STROKE,
-    ),
-)
-```
-
-`PaintSweepGradient` class has the following properties:
-
-* `center` - The center of the gradient.
-* `colors`, `stops`, `tile_mode`, `rotation` - see [Linear gradient](#paintlineargradient) for description of these properties.
-* `start_angle` - The angle in radians at which stop 0.0 of the gradient is placed. Defaults to 0.0.
-* `end_angle` - The angle in radians at which stop 1.0 of the gradient is placed. Defaults to math.pi * 2.
-* `rotation` - gradient rotation in radians.
-
-More information:
-
-* [Sweep gradient](https://api.flutter.dev/flutter/dart-ui/Gradient/Gradient.sweep.html) in Flutter documentation.
-
-### `stroke_cap`
-
-The kind of finish to place on the end of lines drawn when `style` is set to `PaintingStyle.STROKE`.
-
-The value is an instance of `ft.StrokeCap` enum:
-
-* `BUTT` (default) - Begin and end contours with a flat edge and no extension.
-* `ROUND` - Begin and end contours with a semi-circle extension.
-* `SQUARE` - Begin and end contours with a half square extension. This is similar to extending each contour by half the stroke width (as given by `Paint.stroke_width`).
-
-### `stroke_join`
-
-The kind of finish to place on the joins between segments.
-
-This applies to paths drawn when style is set to `PaintingStyle.STROKE`, It does not apply to points drawn as lines with `canvas.Points`.
-
-Defaults to `StrokeJoin.MITER`, i.e. sharp corners.
-
-The value is an instance of `ft.StrokeJoin` enum:
-
-* `MITER` (default) - Joins between line segments form sharp corners.
-* `ROUND` - Joins between line segments are semi-circular.
-* `BEVEL` - Joins between line segments connect the corners of the butt ends of the line segments to give a beveled appearance.
-
-See [StrokeJoin enum](https://api.flutter.dev/flutter/dart-ui/StrokeJoin.html) in Flutter documentation for more details.
-
-### `stroke_miter_limit`
-
-The limit for miters to be drawn on segments when the join is set to `StrokeJoin.MITER` and the style is set to `PaintingStyle.STROKE`. If this limit is exceeded, then a `StrokeJoin.BEVEL` join will be drawn instead. This may cause some 'popping' of the corners of a path if the angle between line segments is animated, as seen in the diagrams below.
-
-This limit is expressed as a limit on the length of the miter.
-
-Defaults to 4.0. Using zero as a limit will cause a `StrokeJoin.BEVEL` join to be used all the time.
-
-### `stroke_width`
-
-How wide to make edges drawn when style is set to `PaintingStyle.STROKE`. The width is given in logical pixels measured in the direction orthogonal to the direction of the path.
-
-Defaults to 0.0, which correspond to a hairline width.
-
-### `stroke_dash_pattern`
-
-A circular array of dash offsets and lengths.
-
-For example, the array `[5, 10]` would result in dashes 5 pixels long
-followed by blank spaces 10 pixels long.  The array `[5, 10, 5]` would
-result in a 5 pixel dash, a 10 pixel gap, a 5 pixel dash, a 5 pixel gap,
-a 10 pixel dash, etc.
-
-### `style`
-
-Whether to paint inside shapes, the edges of shapes, or both.
-
-The value is an instance of `ft.PaintingStyle` enum:
-
-* `FILL` (default) - Apply the `Paint` to the inside of the shape. For example, when applied to the `canvas.Circle` shape, this results in a disc of the given size being painted.
-* `STROKE` - Apply the `Paint` to the edge of the shape. For example, when applied to the `canvas.Circle` shape, this results is a hoop of the given size being painted. The line drawn on the edge will be the width given by the `Paint.stroke_width` property.

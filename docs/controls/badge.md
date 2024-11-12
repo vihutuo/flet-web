@@ -1,16 +1,15 @@
 ---
 title: Badge
 sidebar_label: Badge
-slug: badge
 ---
 
 A Material Design "badge".
 
-Badges are used to show notifications, counts, or status information about its [child](badge#content), typically an icon that is a part of a NavigationBar or a NavigationRail destination or a button's icon.
+Badges are used to show notifications, counts, or status information about its [child](/docs/controls/badge#content), typically an icon that is a part of a NavigationBar or a NavigationRail destination or a button's icon.
 
-The information is shown as [`text`](badge#text) on a badge's label. If the `text` is not provided, the badge is shown as a filled circle of [`small_size`](badge#small_size) diameter.
+The information is shown as [`text`](/docs/controls/badge#text) on a badge's label. If the `text` is not provided, the badge is shown as a filled circle of [`small_size`](/docs/controls/badge#small_size) diameter.
 
-If `text` is provided, the label is a StadiumBorder shaped badge with height equal to [`large_size`](badge#large-size).
+If `text` is provided, the label is a StadiumBorder shaped badge with height equal to [`large_size`](#large_size).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -31,15 +30,15 @@ def main(page: ft.Page):
     page.title = "Badge on a NavigationBar destination icon"
     page.navigation_bar = ft.NavigationBar(
         destinations=[
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(
                 icon_content=ft.Badge(
                     content=ft.Icon(ft.icons.EXPLORE),
                     small_size=10,
                 ),
                 label="Explore",
             ),
-            ft.NavigationDestination(icon=ft.icons.COMMUTE, label="Commute"),
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(icon=ft.icons.COMMUTE, label="Commute"),
+            ft.NavigationBarDestination(
                 icon_content=ft.Badge(content=ft.Icon(ft.icons.PHONE), text="10")
             ),
         ]
@@ -47,7 +46,7 @@ def main(page: ft.Page):
     page.add(ft.Text("Body!"))
 
 
-ft.app(target=main)
+ft.app(main)
 ```
   </TabItem>
 </Tabs>
@@ -58,9 +57,9 @@ ft.app(target=main)
 
 ### `alignment`
 
-Aligns the label relative to the content of the badge. 
+Aligns the label relative to the content of the badge.
 
-The alignment positions the label in similar way content of a container is positioned using its [`alignment`](container#alignment), except that, the badge alignment is resolved as if the label was a [`large_size`](badge#large_size) square and `offset` is added to the result.
+The alignment positions the label in similar way content of a container is positioned using its [`alignment`](/docs/controls/container#alignment), except that the badge alignment is resolved as if the label was a [`large_size`](/docs/controls/badge#large_size) square and `offset` is added to the result.
 
 This value is only used if `text` property is provided.
 
@@ -69,31 +68,40 @@ For example:
 ```python
 badge.alignment = ft.alignment.top_left
 ```
+
+Value is of type [`Alignment`](/docs/reference/types/alignment).
+
 ### `bgcolor`
 
-Background [color](/docs/guides/python/colors) of the label.
+Background [color](/docs/reference/colors) of the label.
 
 ### `content`
 
-A child Control contained by the badge, typically an icon that's part of a [`NavigationBar`](navigationbar) or a [`NavigationRail`](navigationrail) destination.
+A child `Control` contained by the badge, typically an icon that's part of a [`NavigationBar`](/docs/controls/navigationbar) or a [`NavigationRail`](/docs/controls/navigationrail) destination.
+
+Value is of type `Control`.
 
 ### `label_visible`
 
 If False, label is not displayed. By default, `label_visible` is True. It can be used to create a badge that's only shown under certain conditions.
 
+Value is of type `bool`.
+
 ### `large_size`
 
 The badge's label height if `text` is provided.
 
-Default value is 16. If the default value is overridden then it may be useful to also override `padding` and `alignment`.
+If the default value is overridden then it may be useful to also override `padding` and `alignment`.
+
+Value is of type [`OptionalNumber`](/docs/reference/types/aliases#optionalnumber)  and defaults to `16`. 
 
 ### `offset`
 
 Combined with `alignment` to determine the location of the label relative to the content.
 
-This value is only used if `text` is provided.
+Has effect only used if `text` is also provided.
 
-See Controls [`offset`](/docs/controls#offset) for possible values.
+Value is of type [`OffsetValue`](/docs/reference/types/aliases#offsetvalue).
 
 ### `padding`
 
@@ -101,29 +109,30 @@ The padding added to the badge's label.
 
 This value is only used if `text` is provided. Defaults to 4 pixels on the left and right.
 
-See Container's [`padding`](container/#padding) for possible values.
+Value is of type [`PaddingValue`](/docs/reference/types/aliases#paddingvalue).
 
 ### `small_size`
 
 The badge's label diameter if `text` is not provided.
 
-Default value is 6.
+Vaue is of type [`OptionalNumber`](/docs/reference/types/aliases#optionalnumber) and defaults to `6`.
 
 ### `text`
 
 The text shown on badge's label, typically 1 to 4 characters.
 
-If the text is not provided, the badge is shown as a filled circle of [`small_size`](badge#small_size) diameter. 
+If the text is not provided, the badge is shown as a filled circle of [`small_size`](/docs/controls/badge#small_size) diameter. 
 
-If `text` is provided, the label is a StadiumBorder shaped badge with height equal to [`large_size`](badge#large-size).
+If `text` is provided, the label is a StadiumBorder shaped badge with height equal to [`large_size`](#large_size).
+
+Value is of type `str`.
 
 ### `text_color`
 
-[Color](/docs/guides/python/colors) of the text shown in the label. This color overrides the color of the label's `text_style`.
+[Color](/docs/reference/colors) of the text shown in the label. This color overrides the color of the label's `text_style`.
 
 ### `text_style`
 
-The text style to use for text in the label. See [`text_style` properties](text#textstyle-properties) for possible values.
+The text style to use for text in the label.
 
-
-
+Value is of type [`TextStyle`](/docs/reference/types/textstyle).

@@ -1,7 +1,6 @@
 ---
 title: Card
 sidebar_label: Card
-slug: card
 ---
 
 A material design card: a panel with slightly rounded corners and an elevation shadow.
@@ -45,7 +44,7 @@ def main(page):
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 
 ```
   </TabItem>
@@ -55,34 +54,63 @@ ft.app(target=main)
 
 ## Properties
 
+### `clip_behavior`
+
+The `content` will be clipped (or not) according to this option.
+
+Value is of type [`ClipBehavior`](/docs/reference/types/clipbehavior) and defaults to `ClipBehavior.NONE`.
+
 ### `color`
 
-The card's background [color](/docs/guides/python/colors).
+The card's background [color](/docs/reference/colors).
 
 ### `content`
 
 The `Control` that should be displayed inside the card.
 
-This control can only have one child. To lay out multiple children, let this control's child be a control such as [`Row`](row), [`Column`](column), or [`Stack`](stack), which have a children property, and then provide the children to that control.
+This control can only have one child. To lay out multiple children, let this control's child be a control such as [`Row`](/docs/controls/row), [`Column`](/docs/controls/column), or [`Stack`](/docs/controls/stack), which have a children property, and then provide the children to that control.
 
 ### `elevation`
 
 Controls the size of the shadow below the card. Default value is `1.0`.
 
+### `is_semantic_container`
+
+Set to `True` (default) if this card represents a single semantic container, or to `False` if it instead represents a collection of individual semantic nodes (different types of content).
+
 ### `margin`
 
 The empty space that surrounds the card.
 
-See [`Container.margin`](container#margin) property for more information and possible values.
+Value can be one of the following types: `int`, `float`, or [`Margin`](/docs/reference/types/margin).
 
 ### `shadow_color`
 
-The [color](/docs/guides/python/colors) to paint the shadow below the card.
+The [color](/docs/reference/colors) to paint the shadow below the card.
+
+### `shape`
+
+The shape of the card.
+
+Value is of type [`OutlinedBorder`](/docs/reference/types/outlinedborder) and defaults
+to `RoundedRectangleBorder(radius=4.0)`.
+
+### `show_border_on_foreground`
+
+Whether the shape of the border should be painted in front of the `content` or behind.
+
+Defaults to `True`.
 
 ### `surface_tint_color`
 
-The [color](/docs/guides/python/colors) used as an overlay on `color` to indicate elevation.
+The [color](/docs/reference/colors) used as an overlay on `color` to indicate elevation.
 
 If this is `None`, no overlay will be applied. Otherwise this color will be composited on top of `color` with an opacity related to `elevation` and used to paint the background of the card.
 
-The default is `None`.
+Defaults to `None`.
+
+### `variant`
+
+Defines the card variant to be used.
+
+Value is of type [`CardVariant`](/docs/reference/types/cardvariant) and defaults to `CardVariant.ELEVATED`.
