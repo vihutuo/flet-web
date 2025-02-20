@@ -14,7 +14,7 @@ The most simple custom control you can create is a styled control, for example, 
 To create a styled control, you need to create a new class in Python that inherits from the Flet control you are going to customize, `ElevatedButton` in this case:
 
 ```python
-class MyButton(ft.ElevatedButton)
+class MyButton(ft.ElevatedButton):
     def __init__(self, text):
         super().__init__()
         self.bgcolor = ft.Colors.ORANGE_300
