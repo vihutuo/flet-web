@@ -43,7 +43,7 @@ The command will create the following directory structure:
 
 :::note
 1. Original `pyproject.toml` created by `uv init` or `poetry init` will be replaced with the one from Flet app template.
-2. In case you encounter the error `Error creating the project from a template: 'git' is not installed.`, it means that you don't have _Git_ installed. Please visit [git-scm.com/downloads](https://git-scm.com/downloads) and install the latest version of _Git_. To verify your installation, type ‘git’ on Command Prompt.
+2. In case you encounter the error `Error creating the project from a template: 'git' is not installed.`, it means that you don't have _Git_ installed. Please visit [git-scm.com/downloads](https://git-scm.com/downloads) and install the latest version of _Git_. To verify your installation, type `git` in the terminal.
 Please note that _Git_ is not the same as _GitHub CLI_ which is not an alternative for use with Flet.
 :::
 
