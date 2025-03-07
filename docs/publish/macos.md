@@ -11,8 +11,6 @@ The command can be run on macOS only.
 
 ## Prerequisites
 
-## Prerequisites
-
 ### Rosetta 2
 
 Flutter requires [Rosetta 2](https://support.apple.com/en-us/HT211861) on Apple silicon:
