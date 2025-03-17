@@ -72,7 +72,7 @@ ft.app(main)
   </TabItem>
 </Tabs>
 
-<img src="/img/docs/controls/autofillgroup/autofillgroup-example.gif" className="screenshot-40"/>
+<img src="/img/docs/controls/reorderablelistview/reorderablelistview-example.gif" className="screenshot-40"/>
 
 ## Properties
 
