@@ -169,10 +169,6 @@ How to paint any portions of the layout bounds not covered by the image.
 
 Values is of type [`ImageRepeat`](/docs/reference/types/imagerepeat) and defaults to `ImageRepeat.NO_REPEAT`.
 
-### `semantics_label`
-
-A semantics label for this image.
-
 ### `tooltip`
 
 The text displayed when hovering a mouse over the Image.
