@@ -6,41 +6,31 @@ sidebar_label: Lottie
 Displays an animation from a Lottie file (URL or local file).
 
 :::info Packaging
-To build your Flet app that uses `Lottie` control add `--include-packages flet_lottie` to `flet build` command, for
+To build your Flet app that uses `Lottie` control add `flet-lottie` to `dependencies` key of the `[project]` section of your `pyproject.toml` file, for
 example:
 
+```toml
+[project]
+...
+dependencies = [
+  "flet==0.27.6",
+  "flet-lottie==0.1.0",
+]
 ```
-flet build apk --include-packages flet_lottie
-```
-
 :::
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Examples
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
-
-def main(page: ft.Page):
-    page.add(
-        ft.Lottie(
-            src='https://raw.githubusercontent.com/xvrh/lottie-flutter/master/example/assets/Mobilo/A.json',
-            reverse=False,
-            animate=True
-        )
-    )
-
-ft.app(main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/animations/lottie/lottie-basic.py
 ```
 
-  </TabItem>
-</Tabs>
-<img src="/img/docs/controls/lottie/lottie-animation.gif" className="screenshot-20" />
+<img src="/img/docs/controls/lottie/lottie-animation-2.gif" className="screenshot-20" />
 
 ## Properties
 
