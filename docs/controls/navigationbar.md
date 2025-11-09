@@ -1,7 +1,6 @@
 ---
 title: NavigationBar
 sidebar_label: NavigationBar
-slug: navigationbar
 ---
 
 Material 3 Navigation Bar component.
@@ -16,51 +15,47 @@ Navigation bars offer a persistent and convenient way to switch between primary 
 
 <img src="/img/docs/controls/navigation-bar/navigation-bar-sample.gif" className="screenshot-40"/>
 
-```python
-import flet as ft
-
-def main(page: ft.Page):
-
-    page.title = "NavigationBar Example"
-    page.navigation_bar = ft.NavigationBar(
-        destinations=[
-            ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Explore"),
-            ft.NavigationDestination(icon=ft.icons.COMMUTE, label="Commute"),
-            ft.NavigationDestination(
-                icon=ft.icons.BOOKMARK_BORDER,
-                selected_icon=ft.icons.BOOKMARK,
-                label="Explore",
-            ),
-        ]
-    )
-    page.add(ft.Text("Body!"))
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/navigation/navigation-bar/navigation-bar-sample.py
 ```
 
 ## `NavigationBar` properties
 
+### `adaptive`
+
+If the value is `True`, an adaptive `NavigationBar` is created based on whether the target platform is iOS/macOS.
+
+On iOS and macOS, a `CupertinoNavigationBar` is created, which has matching functionality and presentation as `NavigationBar`, and the graphics as expected on iOS. On other platforms, a Material `NavigationBar` is created.
+
+Defaults to `False`.
+
+### `animation_duration`
+
+The transition time for each destination as it goes between selected and unselected.
+
 ### `bgcolor`
 
-The [color](/docs/guides/python/colors) of the NavigationBar itself.
+The [color](/docs/reference/colors) of the navigation bar itself.
 
 ### `destinations`
 
 Defines the appearance of the button items that are arrayed within the navigation bar.
 
-The value must be a list of two or more `NavigationDestination` instances.
+The value must be a list of two or more `NavigationBarDestination` instances.
 
 ### `elevation`
 
-The elevation of the NavigationBar itself.
+The elevation of the navigation bar itself.
 
 ### `indicator_color`
 
-The [color](/docs/guides/python/colors) of the selected destination indicator.
+The [color](/docs/reference/colors) of the selected destination indicator.
 
 ### `indicator_shape`
 
-The shape of the selected destination indicator. See [button style example](elevatedbutton#style) for possible values.
+The shape of the selected destination indicator.
+
+Value is of type [`OutlinedBorder`](/docs/reference/types/outlinedborder).
 
 ### `label_behavior`
 
@@ -68,19 +63,21 @@ Defines how the destinations' labels will be laid out and when they'll be displa
 
 Can be used to show all labels, show only the selected label, or hide all labels.
 
-Property value is `NavigationBarLabelBehavior` enum with the following values:
+Value is of type [`NavigationBarLabelBehavior`](/docs/reference/types/navigationbarlabelbehavior) and defaults
+to `NavigationBarLabelBehavior.ALWAYS_SHOW`.
 
-* `ALWAYS_SHOW` (default) - Always shows all of the labels under each navigation bar destination, selected and unselected.
-* `ALWAYS_HIDE` - Never shows any of the labels under the navigation bar destinations, regardless of selected vs unselected.
-* `ONLY_SHOW_SELECTED` - Only shows the labels of the selected navigation bar destination. When a destination is unselected, the label will be faded out, and the icon will be centered. When a destination is selected, the label will fade in and the label and icon will slide up so that they are both centered.
+### `overlay_color`
+
+The highlight [color](/docs/reference/colors) of the `NavigationDestination` in various [`ControlState`](/docs/reference/types/controlstate) states.
+The following [`ControlState`](/docs/reference/types/controlstate) values are supported: `PRESSED`, `HOVERED` and `FOCUSED`.
 
 ### `selected_index`
 
-The index into `destinations` for the current selected `NavigationDestination` or `None` if no destination is selected.
+The index into `destinations` for the current selected `NavigationBarDestination` or `None` if no destination is selected.
 
 ### `shadow_color`
 
-The [color](/docs/guides/python/colors) used for the drop shadow to indicate `elevation`.
+The [color](/docs/reference/colors) used for the drop shadow to indicate `elevation`.
 
 ### `surface_tint_color`
 
@@ -92,30 +89,58 @@ The surface tint of the Material that holds the NavigationDrawer's contents.
 
 Fires when selected destination changed.
 
-## `NavigationDestination` properties
+## `NavigationBarDestination` properties
+
+### `bgcolor`
+
+The [color](/docs/reference/colors) of this destination.
 
 ### `icon`
 
-The name of the icon of the destination.
+The [name of the icon](/docs/reference/icons) or `Control` of the destination. 
 
-### `icon_content`
+Example with icon name:
+```
+icon=ft.Icons.BOOKMARK
+```
+Example with Control:
+```
+icon=ft.Icon(ft.Icons.BOOKMARK)
+```
 
-The icon `Control` of the destination. Typically the icon is an [`Icon`](icon) control. Used instead of `icon` property.
+If `selected_icon` is provided, this will only be displayed when the destination is not selected.
 
-If `selected_icon_content` is provided, this will only be displayed when the destination is not selected.
+To make the NavigationBar more accessible, consider choosing an icon with a stroked and filled version, such as `ft.Icons.CLOUD` and `ft.Icons.CLOUD_QUEUE`. The icon should be set to the stroked version and `selected_icon` to the filled version.
 
-To make the NavigationBar more accessible, consider choosing an icon with a stroked and filled version, such as `icons.CLOUD` and `icons.CLOUD_QUEUE`. The icon should be set to the stroked version and `selected_icon` to the filled version.
+### ~~`icon_content`~~
+
+The icon `Control` of the destination. Typically the icon is an [`Icon`](/docs/controls/icon) control. Used instead of `icon` property.
+
+**Deprecated in v0.25.0 and will be removed in v0.28.0. Use [`icon`](#icon)
+instead.**
 
 ### `label`
 
-The text label that appears below the icon of this `NavigationDestination`.
+The text label that appears below the icon of this `NavigationBarDestination`.
 
 ### `selected_icon`
 
-The name of alternative icon displayed when this destination is selected.
+The [name](/docs/reference/icons) of alternative icon or `Control` displayed when this destination is selected. 
 
-### `selected_icon_content`
+Example with icon name:
+```
+selected_icon=ft.Icons.BOOKMARK
+```
+Example with Control:
+```
+selected_icon=ft.Icon(ft.Icons.BOOKMARK)
+```
+
+If this icon is not provided, the NavigationBar will display `icon` in either state.
+
+### ~~`selected_icon_content`~~
 
 An alternative icon `Control` displayed when this destination is selected.
 
-If this icon is not provided, the NavigationBar will display `icon_content` in either state.
+**Deprecated in v0.25.0 and will be removed in v0.28.0. Use [`selected_icon`](#selected_icon)
+instead.**

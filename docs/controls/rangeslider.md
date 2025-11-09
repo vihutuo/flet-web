@@ -1,7 +1,6 @@
 ---
 title: RangeSlider
 sidebar_label: RangeSlider
-slug: rangeslider
 ---
 
 A Material Design range slider. Used to select a range from a range of values.
@@ -17,110 +16,28 @@ import TabItem from '@theme/TabItem';
 
 ### Range slider with divisions and labels
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
-
-
-def main(page: ft.Page):
-    range_slider = ft.RangeSlider(
-        min=0,
-        max=50,
-        start_value=10,
-        divisions=10,
-        end_value=20,
-        inactive_color=ft.colors.GREEN_300,
-        active_color=ft.colors.GREEN_700,
-        overlay_color=ft.colors.GREEN_100,
-        label="{value}%",
-    )
-
-    page.add(
-        ft.Column(
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[
-                ft.Text(
-                    "Range slider with divisions and labels",
-                    size=20,
-                    weight=ft.FontWeight.BOLD,
-                ),
-                ft.Container(height=30),
-                range_slider,
-            ],
-        )
-    )
-
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/input-and-selections/range-slider/range-slider-example.py
 ```
-  </TabItem>
-</Tabs>
+
 
 <img src="/img/docs/controls/rangeslider/rangeslider.gif" className="screenshot-70"/>
 
 ### RangeSlider with events
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
-
-```python
-import flet as ft
 
 
-def main(page: ft.Page):
-    def slider_change_start(e):
-        print(
-            f"Slider change start, values are {e.control.start_value}, {e.control.end_value}"
-        )
-
-    def slider_is_changing(e):
-        print(
-            f"Slider is changing, values are {e.control.start_value}, {e.control.end_value}"
-        )
-
-    def slider_change_end(e):
-        print(
-            f"Slider change end, values are {e.control.start_value}, {e.control.end_value}"
-        )
-
-    range_slider = ft.RangeSlider(
-        min=0,
-        max=50,
-        start_value=10,
-        end_value=20,
-        on_change_start=slider_change_start,
-        on_change=slider_is_changing,
-        on_change_end=slider_change_end,
-    )
-
-    page.add(
-        ft.Column(
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[
-                ft.Text(
-                    "Range slider with events",
-                    size=20,
-                    weight=ft.FontWeight.BOLD,
-                ),
-                ft.Container(height=30),
-                range_slider,
-            ],
-        )
-    )
-
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/input-and-selections/range-slider/range-slider-with-event.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ## Properties
 
 ### `active_color`
 
-The [color](/docs/guides/python/colors) to use for the portion of the slider track that is active.
+The [color](/docs/reference/colors) to use for the portion of the slider track that is active.
 
 The "active" segment of the range slider is the span between the thumbs.
 
@@ -140,13 +57,11 @@ The slider's right thumb is drawn at a position that corresponds to this value.
 
 ### `inactive_color`
 
-The [color](/docs/guides/python/colors) for the inactive portions of the slider track.
+The [color](/docs/reference/colors) for the inactive portions of the slider track.
 
 The "inactive" segments of the slider are the span of tracks between the min and the start thumb, and the end thumb and the max.
 
 ### `label`
-
-Format with `{value}`.
 
 A label to show above the slider thumbs when the slider is active. The value of `label` may contain `{value}` which will be replaced with a current slider `start_value` and `end_value`.
 
@@ -154,11 +69,11 @@ If not set, then the labels will not be displayed.
 
 ### `max`
 
-The maximum value the user can select.
-
-Defaults to `1.0`. Must be greater than or equal to `min`.
+The maximum value the user can select. Must be greater than or equal to `min`.
 
 If the `max` is equal to the `min`, then the slider is disabled.
+
+Defaults to `1.0`.
 
 ### `min`
 
@@ -168,9 +83,16 @@ Defaults to `0.0`. Must be less than or equal to `max`.
 
 If the `max` is equal to the `min`, then the slider is disabled.
 
+### `mouse_cursor`
+
+The cursor for a mouse pointer entering or hovering over this control. It's value can be made to depend on the slider's [`ControlState`](/docs/reference/types/controlstate).
+
+Value is of type [`MouseCursor`](/docs/reference/types/mousecursor).
+
 ### `overlay_color`
 
-The hightlight [color](/docs/guides/python/colors) around the thumbs used to indicate that the range slider thumbs are hovered or dragged.
+The highlight [color](/docs/reference/colors) that's typically used to indicate that the range slider thumb is
+in `HOVERED` or `DRAGGED` [`ControlState`](/docs/reference/types/controlstate)s.
 
 ### `round`
 

@@ -1,10 +1,7 @@
 ---
 slug: matplotlib-and-plotly-charts
 title: Matplotlib and Plotly charts
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -35,12 +32,14 @@ Check the docs for Matplotlib and Plotly charting controls:
 
 Explore [Flet chart examples](https://github.com/flet-dev/examples/tree/main/python/controls/charts).
 
+<!-- truncate -->
+
 Learn Python libraries by examples:
 
 * [Matplotlib gallery](https://matplotlib.org/stable/gallery/index.html)
 * [Plotly gallery](https://plotly.com/python/)
 
-In the future releases, we may add an interactive "toolbar" for Matplotlib charts by implementing a custom [backend](https://matplotlib.org/stable/users/explain/backends.html). Or maybe it's a great excersize for Flet users? 😉
+In the future releases, we may add an interactive "toolbar" for Matplotlib charts by implementing a custom [backend](https://matplotlib.org/stable/users/explain/backends.html). Or maybe it's a great exercise for Flet users? 😉
 
 Also, when it's time for Flet to support other languages we would need to re-visit charting to make it language-agnostic as the current charting implementation relies on Python libraries.
 

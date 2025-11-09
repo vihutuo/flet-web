@@ -1,10 +1,7 @@
 ---
 slug: navigation-and-routing
 title: Navigation and Routing
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -23,6 +20,8 @@ Well, it took [more efforts](https://github.com/flet-dev/flet/pull/95/files) tha
 <img src="/img/docs/navigation-routing/routing-app-example.gif" className="screenshot-60" />
 
 Explore [source code](https://github.com/flet-dev/examples/blob/main/python/apps/routing-navigation/building-views-on-route-change.py) of the example above.
+
+<!-- truncate -->
 
 ## Page route
 
@@ -123,7 +122,7 @@ def main(page: ft.Page):
             ft.View(
                 "/",
                 [
-                    ft.AppBar(title=ft.Text("Flet app"), bgcolor=ft.colors.SURFACE_VARIANT),
+                    ft.AppBar(title=ft.Text("Flet app"), bgcolor=ft.Colors.SURFACE_VARIANT),
                     ft.ElevatedButton("Visit Store", on_click=lambda _: page.go("/store")),
                 ],
             )
@@ -133,7 +132,7 @@ def main(page: ft.Page):
                 ft.View(
                     "/store",
                     [
-                        ft.AppBar(title=ft.Text("Store"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.AppBar(title=ft.Text("Store"), bgcolor=ft.Colors.SURFACE_VARIANT),
                         ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
                     ],
                 )
@@ -163,7 +162,7 @@ Notice the usage of [`page.on_view_pop`](/docs/controls/page#on_view_pop) event 
 
 ## Route templates
 
-Flet offers [`TemplateRoute`](https://github.com/flet-dev/flet/blob/main/sdk/python/flet/template_route.py) - an utility class based on [repath](https://github.com/nickcoutsos/python-repath) library which allows matching ExpressJS-like routes and parsing their parameters, for example `/account/:account_id/orders/:order_id`.
+Flet offers [`TemplateRoute`](https://github.com/flet-dev/flet/blob/main/sdk/python/packages/flet-core/src/flet_core/template_route.py) - an utility class based on [repath](https://github.com/nickcoutsos/python-repath) library which allows matching ExpressJS-like routes and parsing their parameters, for example `/account/:account_id/orders/:order_id`.
 
 `TemplateRoute` plays great with route change event:
 
@@ -182,5 +181,5 @@ You can read more about template syntax supported by `repath` library [here](htt
 
 That's all for today!
 
-[Give Flet a try](/docs/guides/python/getting-started) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
+[Give Flet a try](/docs) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
 

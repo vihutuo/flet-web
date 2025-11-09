@@ -1,7 +1,6 @@
 ---
 title: Row
 sidebar_label: Row
-slug: row
 ---
 
 A control that displays its children in a horizontal array.
@@ -19,212 +18,45 @@ import TabItem from '@theme/TabItem';
 
 <img src="/img/docs/controls/row/row-spacing.gif" className="screenshot" />
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
 
-def main(page: ft.Page):
-    def items(count):
-        items = []
-        for i in range(1, count + 1):
-            items.append(
-                ft.Container(
-                    content=ft.Text(value=str(i)),
-                    alignment=ft.alignment.center,
-                    width=50,
-                    height=50,
-                    bgcolor=ft.colors.AMBER,
-                    border_radius=ft.border_radius.all(5),
-                )
-            )
-        return items
-
-    def gap_slider_change(e):
-        row.spacing = int(e.control.value)
-        row.update()
-
-    gap_slider = ft.Slider(
-        min=0,
-        max=50,
-        divisions=50,
-        value=0,
-        label="{value}",
-        on_change=gap_slider_change,
-    )
-
-    row = ft.Row(spacing=0, controls=items(10))
-
-    page.add(ft.Column([ ft.Text("Spacing between items"), gap_slider]), row)
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/layout/row/row-spacing.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ### Row wrapping
 
 <img src="/img/docs/controls/row/row-wrap.gif" className="screenshot" />
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
 
-def main(page: ft.Page):
-    def items(count):
-        items = []
-        for i in range(1, count + 1):
-            items.append(
-                ft.Container(
-                    content=ft.Text(value=str(i)),
-                    alignment=ft.alignment.center,
-                    width=50,
-                    height=50,
-                    bgcolor=ft.colors.AMBER,
-                    border_radius=ft.border_radius.all(5),
-                )
-            )
-        return items
-
-    def slider_change(e):
-        row.width = float(e.control.value)
-        row.update()
-
-    width_slider = ft.Slider(
-        min=0,
-        max=page.window_width,
-        divisions=20,
-        value=page.window_width,
-        label="{value}",
-        on_change=slider_change,
-    )
-
-    row = ft.Row(
-        wrap=True,
-        spacing=10,
-        run_spacing=10,
-        controls=items(30),
-        width=page.window_width,
-    )
-
-    page.add(
-        ft.Column(
-            [
-                ft.Text(
-                    "Change the row width to see how child items wrap onto multiple rows:"
-                ),
-                width_slider,
-            ]
-        ),
-        row,
-    )
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/layout/row/row-wrap.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ### Row horizontal alignments
 
 <img src="/img/docs/controls/row/row-alignment.png" className="screenshot" />
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
-
-```python
-import flet as ft
-
-def main(page: ft.Page):
-    def items(count):
-        items = []
-        for i in range(1, count + 1):
-            items.append(
-                ft.Container(
-                    content=ft.Text(value=str(i)),
-                    alignment=ft.alignment.center,
-                    width=50,
-                    height=50,
-                    bgcolor=ft.colors.AMBER_500,
-                )
-            )
-        return items
-
-    def row_with_alignment(align: ft.MainAxisAlignment):
-        return ft.Column(
-            [
-                ft.Text(str(align), size=16),
-                ft.Container(
-                    content=ft.Row(items(3), alignment=align),
-                    bgcolor=ft.colors.AMBER_100,
-                ),
-            ]
-        )
-
-    page.add(
-        row_with_alignment(ft.MainAxisAlignment.START),
-        row_with_alignment(ft.MainAxisAlignment.CENTER),
-        row_with_alignment(ft.MainAxisAlignment.END),
-        row_with_alignment(ft.MainAxisAlignment.SPACE_BETWEEN),
-        row_with_alignment(ft.MainAxisAlignment.SPACE_AROUND),
-        row_with_alignment(ft.MainAxisAlignment.SPACE_EVENLY),
-    )
 
 
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/layout/row/row-alignment.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ### Row vertical 
 
 <img src="/img/docs/controls/row/row-vertical-alignment.png" className="screenshot-70" />
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
 
-def main(page: ft.Page):
-    def items(count):
-        items = []
-        for i in range(1, count + 1):
-            items.append(
-                ft.Container(
-                    content=ft.Text(value=str(i)),
-                    alignment=ft.alignment.center,
-                    width=50,
-                    height=50,
-                    bgcolor=ft.colors.AMBER_500,
-                )
-            )
-        return items
-
-    def row_with_vertical_alignment(align: ft.CrossAxisAlignment):
-        return ft.Column(
-            [
-                ft.Text(str(align), size=16),
-                ft.Container(
-                    content=ft.Row(items(3), vertical_alignment=align),
-                    bgcolor=ft.colors.AMBER_100,
-                    height=150,
-                ),
-            ]
-        )
-
-    page.add(
-        row_with_vertical_alignment(ft.CrossAxisAlignment.START),
-        row_with_vertical_alignment(ft.CrossAxisAlignment.CENTER),
-        row_with_vertical_alignment(ft.CrossAxisAlignment.END),
-    )
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/layout/row/row-vert-alignment.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ## Properties
 
@@ -232,16 +64,8 @@ ft.app(target=main)
 
 How the child Controls should be placed horizontally.
 
-For example, `MainAxisAlignment.START`, the default, places the children on the left of a Row.
-
-Property value is `MainAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `END`
-* `CENTER`
-* `SPACE_BETWEEN`
-* `SPACE_AROUND`
-* `SPACE_EVENLY`
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment) and defaults
+to `MainAxisAlignment.START`.
 
 ### `auto_scroll`
 
@@ -251,57 +75,57 @@ Property value is `MainAxisAlignment` enum with the following values:
 
 A list of Controls to display inside the Row.
 
+### `rtl`
+
+`True` to set text direction to right-to-left.
+
+Defaults to `False`.
+
+### `run_alignment`
+
+How the runs should be placed in the cross-axis when `wrap=True`.
+
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment) and defaults to `MainAxisAlignment.START`.
+
 ### `run_spacing`
 
-Spacing between runs when `wrap=True`. Default value is 10.
+Spacing between runs when `wrap=True`.
+
+Defaults to `10`.
 
 ### `scroll`
 
 Enables horizontal scrolling for the Row to prevent its content overflow.
 
-Property value is an optional `ScrollMode` enum with `None` as default.
-
-Supported values:
-
-* `None` (default) - the Row is non-scrollable and its content could overflow.
-* `AUTO` - scrolling is enabled and scroll bar is only shown when scrolling occurs.
-* `ADAPTIVE` - scrolling is enabled and scroll bar is always shown when running app as web or desktop.
-* `ALWAYS` - scrolling is enabled and scroll bar is always shown.
-* `HIDDEN` - scrolling is enabled, but scroll bar is always hidden.
+Value is of type [`ScrollMode`](/docs/reference/types/scrollmode).
 
 ### `spacing`
 
-Spacing between controls in a row. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+Spacing between controls in a row. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set
+to `MainAxisAlignment.START`, `MainAxisAlignment.END` or `MainAxisAlignment.CENTER`.
 
 ### `on_scroll_interval`
 
-Throttling in milliseconds for `on_scroll` event. Default is `10`.
+Throttling in milliseconds for `on_scroll` event.
+
+Defaults to `10`.
 
 ### `tight`
 
-Specifies how much space should be occupied horizontally. Default is `False` - allocate all space to children.
+Specifies how much space should be occupied horizontally.
+
+Defaults to `False`, meaning all space is allocated to children.
 
 ### `vertical_alignment`
 
 How the child Controls should be placed vertically.
 
-Property value is `CrossAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `CENTER`
-* `END`
-* `STRETCH`
-* `BASELINE`
+Value is of type [`CrossAxisAlignment`](/docs/reference/types/crossaxisalignment) and defaults
+to `CrossAxisAlignment.START`.
 
 ### `wrap`
 
 When set to `True` the Row will put child controls into additional rows (runs) if they don't fit a single row.
-
-### `on_scroll`
-
-Fires when row's scroll position is changed by a user.
-
-See [`Column.on_scroll`](column#on_scroll) for event details and examples.
 
 ## Methods
 
@@ -309,7 +133,7 @@ See [`Column.on_scroll`](column#on_scroll) for event details and examples.
 
 Moves scroll position to either absolute `offset`, relative `delta` or jump to the control with specified `key`.
 
-See [`Column.scroll_to()`](column#scroll_tooffset-delta-key-duration-curve) for method details and examples.
+See [`Column.scroll_to()`](/docs/controls/column#scroll_tooffset-delta-key-duration-curve) for method details and examples.
 
 ## Events
 
@@ -317,7 +141,7 @@ See [`Column.scroll_to()`](column#scroll_tooffset-delta-key-duration-curve) for 
 
 Fires when scroll position is changed by a user.
 
-See [`Column.on_scroll`](column#on_scroll) for event details and examples.
+Event handler argument is an instance of [`OnScrollEvent`](/docs/reference/types/onscrollevent) class.
 
 ## Expanding children
 
@@ -341,3 +165,5 @@ r = ft.Row([
 ```
 
 In general, the resulting width of a child in percents is calculated as `expand / sum(all expands) * 100%`.
+
+If you need to give the child Control of the Row the flexibility to expand to fill the available space horizontally but not require it to fill the available space, set its `expand_loose` property to `True`.

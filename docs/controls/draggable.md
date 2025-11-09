@@ -1,14 +1,15 @@
 ---
 title: Draggable
 sidebar_label: Draggable
-slug: draggable
 ---
 
-A control that can be dragged from to a [DragTarget](dragtarget).
+A control that can be dragged from to a [DragTarget](/docs/controls/dragtarget).
 
-When a draggable control recognizes the start of a drag gesture, it displays a [`content_feedback`](#content_feedback) control that tracks the user's finger across the screen. If the user lifts their finger while on top of a [DragTarget](dragtarget), that target is given the opportunity to complete drag-and-drop flow.
+When a draggable control recognizes the start of a drag gesture, it displays a [`content_feedback`](#content_feedback) control that tracks the user's finger across the screen. If the user lifts their finger while on top of a [DragTarget](/docs/controls/dragtarget), that target is given the opportunity to complete drag-and-drop flow.
 
-This control displays [`content`](#content) when zero drags are under way. If [`content_when_dragging`](#contentwhendragging) is non-null, this control instead displays `content_when_dragging` when one or more drags are underway. Otherwise, this widget always displays `content`.
+This control displays [`content`](#content) when zero drags are under way.
+If [`content_when_dragging`](#content_when_dragging) is not `None`, this control instead
+displays `content_when_dragging` when one or more drags are underway. Otherwise, this widget always displays `content`.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -19,113 +20,38 @@ import TabItem from '@theme/TabItem';
 
 ### Drag and drop colors
 
-<img src="/img/docs/controls/drag-and-drop/drag-and-drop-colors.gif" className="screenshot-50" />
-
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
-
-```python
-import flet
-from flet import (
-    Column,
-    Container,
-    Draggable,
-    DragTarget,
-    DragTargetAcceptEvent,
-    Page,
-    Row,
-    border,
-    colors,
-)
+<img src="/img/docs/controls/drag-and-drop/drag-drop.gif" className="screenshot-50" />
 
 
-def main(page: Page):
-    page.title = "Drag and Drop example"
-
-    def drag_will_accept(e):
-        e.control.content.border = border.all(
-            2, colors.BLACK45 if e.data == "true" else colors.RED
-        )
-        e.control.update()
-
-    def drag_accept(e: DragTargetAcceptEvent):
-        src = page.get_control(e.src_id)
-        e.control.content.bgcolor = src.content.bgcolor
-        e.control.content.border = None
-        e.control.update()
-
-    def drag_leave(e):
-        e.control.content.border = None
-        e.control.update()
-
-    page.add(
-        Row(
-            [
-                Column(
-                    [
-                        Draggable(
-                            group="color",
-                            content=Container(
-                                width=50,
-                                height=50,
-                                bgcolor=colors.CYAN,
-                                border_radius=5,
-                            ),
-                            content_feedback=Container(
-                                width=20,
-                                height=20,
-                                bgcolor=colors.CYAN,
-                                border_radius=3,
-                            ),
-                        ),
-                        Draggable(
-                            group="color",
-                            content=Container(
-                                width=50,
-                                height=50,
-                                bgcolor=colors.YELLOW,
-                                border_radius=5,
-                            ),
-                        ),
-                        Draggable(
-                            group="color1",
-                            content=Container(
-                                width=50,
-                                height=50,
-                                bgcolor=colors.GREEN,
-                                border_radius=5,
-                            ),
-                        ),
-                    ]
-                ),
-                Container(width=100),
-                DragTarget(
-                    group="color",
-                    content=Container(
-                        width=50,
-                        height=50,
-                        bgcolor=colors.BLUE_GREY_100,
-                        border_radius=5,
-                    ),
-                    on_will_accept=drag_will_accept,
-                    on_accept=drag_accept,
-                    on_leave=drag_leave,
-                ),
-            ]
-        )
-    )
-
-
-flet.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/utility/drag-target-draggable/dragabble-target-example.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ## Properties
 
+### `axis`
+
+The axis to restrict this draggable's movement.
+
+When axis is set to `Axis.HORIZONTAL`, this control can only be dragged horizontally. 
+When axis is set to `Axis.VERTICAL`, this control can only be dragged vertically.
+
+Value is of type [`Axis`](/docs/reference/types/axis) and defaults to `None` - no restriction.
+
+### `affinity`
+
+Controls how this control competes with other gestures to initiate a drag.
+If set to `None`, this widget initiates a drag as soon as it recognizes a tap down gesture, regardless of any directionality. 
+If set to `Axis.HORIZONTAL` or `Axis.VERTICAL`, then this control will compete with other horizontal (or vertical, respectively) gestures.
+
+Value is of type [`Axis`](/docs/reference/types/axis).
+
 ### `content`
 
-`Draggable` control displays [`content`](#content) when zero drags are under way. If [`content_when_dragging`](#contentwhendragging) is non-null, this control instead displays `content_when_dragging` when one or more drags are underway. Otherwise, this control always displays `content`.
+`Draggable` control displays [`content`](#content) when zero drags are under way.
+If [`content_when_dragging`](#content_when_dragging) is not `None`, this control instead
+displays `content_when_dragging` when one or more drags are underway. Otherwise, this control always displays `content`.
 
 ### `content_feedback`
 
@@ -139,4 +65,24 @@ If this is `None`, then this widget will always display `content` (and so the dr
 
 ### `group`
 
-A group this draggable belongs to. For [DragTarget](dragtarget) to accept incoming drag both `Draggable` and `DragTarget` must be in the same `group`.
+A group this draggable belongs to. For [`DragTarget`](/docs/controls/dragtarget) to accept incoming drag
+both `Draggable` and `DragTarget` must be in the same `group`.
+
+### `max_simultaneous_drags`
+
+The number of simultaneous drags to support.
+
+- Set this to `0` if you want to prevent the draggable from actually being dragged.
+- Set this to `1` if you want to only allow the drag source to have one item dragged at a time. In this case, consider supplying an "empty" widget for `content_when_dragging` to create the illusion of actually moving `content`.
+
+Defaults to `None` - no limit.
+
+## `Events`
+
+### `on_drag_complete`
+
+Fires when this draggable is dropped and accepted by a DragTarget.
+
+### `on_drag_start`
+
+Fires when this draggable starts being dragged.

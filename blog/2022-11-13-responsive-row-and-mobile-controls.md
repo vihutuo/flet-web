@@ -1,10 +1,7 @@
 ---
 slug: responsive-row-and-mobile-controls
 title: ResponsiveRow and mobile controls
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -16,7 +13,7 @@ We just released [Flet 0.1.65](https://pypi.org/project/flet/0.1.65/) which is a
 
 `ResponsiveRow` allows aligning child controls to virtual columns. By default, a virtual grid has 12 columns, but that can be customized with `ResponsiveRow.columns` property.
 
-Similar to `expand` property every control now has `col` property which allows specifying how many columns a control should span. For examle, to make a layout consisting of two columns spanning 6 virtual columns each:
+Similar to `expand` property every control now has `col` property which allows specifying how many columns a control should span. For example, to make a layout consisting of two columns spanning 6 virtual columns each:
 
 ```python
 import flet as ft
@@ -26,6 +23,8 @@ ft.ResponsiveRow([
     ft.Column(col=6, controls=ft.Text("Column 2"))
 ])
 ```
+
+<!-- truncate -->
 
 `ResponsiveRow` is "responsive" because it can adapt the size of its children to a changing screen (page, window) size. `col` property in the example above is a constant number which means the child will span 6 columns for any screen size.
 
@@ -75,25 +74,25 @@ def main(page: ft.Page):
                 ft.Container(
                     ft.Text("Column 1"),
                     padding=5,
-                    bgcolor=ft.colors.YELLOW,
+                    bgcolor=ft.Colors.YELLOW,
                     col={"sm": 6, "md": 4, "xl": 2},
                 ),
                 ft.Container(
                     ft.Text("Column 2"),
                     padding=5,
-                    bgcolor=ft.colors.GREEN,
+                    bgcolor=ft.Colors.GREEN,
                     col={"sm": 6, "md": 4, "xl": 2},
                 ),
                 ft.Container(
                     ft.Text("Column 3"),
                     padding=5,
-                    bgcolor=ft.colors.BLUE,
+                    bgcolor=ft.Colors.BLUE,
                     col={"sm": 6, "md": 4, "xl": 2},
                 ),
                 ft.Container(
                     ft.Text("Column 4"),
                     padding=5,
-                    bgcolor=ft.colors.PINK_300,
+                    bgcolor=ft.Colors.PINK_300,
                     col={"sm": 6, "md": 4, "xl": 2},
                 ),
             ],
@@ -116,7 +115,7 @@ ft.app(target=main)
 
 ## Other new controls
 
-This release adds new visual and non-visual controls requested by Flet community and also required to build UI of the upcoming [Flet Studio](/docs/guides/python/mobile-support#flet-studio-for-ios-and-android).
+This release adds new visual and non-visual controls requested by Flet community and also required to build UI of the upcoming [Flet Studio](/docs/cookbook/mobile-support#flet-studio-for-ios-and-android).
 
 ### BottomSheet
 
@@ -140,7 +139,7 @@ A tooltip control:
 
 <img src="/img/docs/controls/tooltip/custom-tooltip.gif" className="screenshot-30"/>
 
-`Tooltip` [docs](/docs/controls/tooltip), [example](https://github.com/flet-dev/examples/blob/main/python/controls/tooltip/custom-tooltip.py).
+`Tooltip` [docs](/docs/reference/types/tooltip), [example](https://github.com/flet-dev/examples/blob/main/python/controls/tooltip/custom-tooltip.py).
 
 ### HapticFeedback
 

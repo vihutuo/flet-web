@@ -1,12 +1,12 @@
 ---
 title: View
 sidebar_label: View
-slug: view
 ---
 
 View is the top most container for all other controls.
 
-A root view is automatically created when a new user session started. From layout perspective the View represents a [Column](column) control, so it has a similar behavior and shares same properties.
+A root view is automatically created when a new user session started. From layout perspective the View represents
+a [`Column`](/docs/controls/column) control, so it has a similar behavior and shares same properties.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -19,17 +19,26 @@ A [`AppBar`](/docs/controls/appbar) control to display at the top of the Page.
 
 ### `auto_scroll`
 
-`True` if scrollbar should automatically move its position to the end when children updated. Must be `False` for `scroll_to()` method to work.
+`True` if scrollbar should automatically move its position to the end when children updated. Must be `False`
+for `scroll_to()` to work.
 
 ### `bgcolor`
 
-Background color of the Page.
+Background [color](/docs/reference/colors) of the view.
 
-A color value could be a hex value in `#ARGB` format (e.g. `#FFCC0000`), `#RGB` format (e.g. `#CC0000`) or a named color from `flet.colors` module.
+### `can_pop`
+
+This property controls whether the view can be uncoditionally removed from navigation either
+programmatically, say by modifying `page.views` list, or when a user uses device back button.
+
+By default, `can_pop` is `True` which means the view will be removed with no questions asked.
+However, if you set `View.can_pop` to `False` then you can add `View.on_confirm_pop` event handler where you can open an alert dialog to confirm or do other checks and then call `View.confirm_pop(True|False)` method to either allow or prevent view from removal.
+
+Another use case is setting `page.views[0].canPop = False` for root view to prevent closing the app with hardware back button on Android.
 
 ### `controls`
 
-A list of Controls to display on the Page.
+A list of `Control`s to display on the Page.
 
 For example, to add a new control to a page:
 
@@ -69,100 +78,111 @@ page.update()
   </TabItem>
 </Tabs>
 
+Value is of a list of `Control`s.
+
+### `decoration`
+
+The background decoration.
+
+Value is of type [`BoxDecoration`](/docs/reference/types/boxdecoration).
+
+### `drawer`
+
+A [`NavigationDrawer`](/docs/controls/navigationdrawer) control to display as a panel sliding from the start edge of the view.
+
+### `end_drawer`
+
+A [`NavigationDrawer`](/docs/controls/navigationdrawer) control to display as a panel sliding from the end edge of the view.
+
+### `floating_action_button`
+
+A [`FloatingActionButton`](/docs/controls/floatingactionbutton) control to display on top of Page content.
+
+### `floating_action_button_location`
+
+Describes position of [`floating_action_button`](#floating_action_button)
+
+Value is of type [`FloatingActionButtonLocation`](/docs/controls/floatingactionbutton)
+
+### `foreground_decoration`
+
+The foreground decoration.
+
+Value is of type [`BoxDecoration`](/docs/reference/types/boxdecoration).
+
 ### `fullscreen_dialog`
 
 Whether this view is a full-screen dialog.
 
 In Material and Cupertino, being fullscreen has the effects of making the app bars have a close button instead of a back button. On iOS, dialogs transitions animate differently and are also not closeable with the back swipe gesture.
 
-### `route`
-
-View's route - not currently used by Flet framework, but can be used in a user program to update [`page.route`](/docs/controls/page#route) when a view popped.
-
-### `floating_action_button`
-
-A [`FloatingActionButton`](/docs/controls/floatingactionbutton) control to display on top of Page content.
+Value is of type `bool` and defaults to `False`.
 
 ### `horizontal_alignment`
 
 How the child Controls should be placed horizontally.
 
-Default value is `CrossAxisAlignment.START` which means on the left side of the Page.
-
-Property value is `CrossAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `CENTER`
-* `END`
-* `STRETCH`
-* `BASELINE`
+Value is of type [`CrossAxisAlignment`](/docs/reference/types/crossaxisalignment) and defaults
+to `CrossAxisAlignment.START`.
 
 ### `on_scroll_interval`
 
-Throttling in milliseconds for `on_scroll` event. Default is `10`.
+Throttling in milliseconds for `on_scroll` event.
+
+Value is of type `int` and defaults to `10`.
 
 ### `padding`
 
-A space between page contents and its edges. Default value is 10 pixels from each side. To set zero padding:
+A space between page contents and its edges.
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
+Value is of type [`PaddingValue`](/docs/reference/types/aliases#paddingvalue) and defaults to `padding.all(10)`.
 
-```python
-page.padding = 0
-page.update()
-```
+### `route`
 
-  </TabItem>
-</Tabs>
+View's route - not currently used by Flet framework, but can be used in a user program to update [`page.route`](/docs/controls/page#route) when a view popped.
 
-See [`Container.padding`](container#padding) for more information and possible values.
+Value is of type `str`
 
 ### `scroll`
 
 Enables a vertical scrolling for the Page to prevent its content overflow.
 
-Property value is an optional `ScrollMode` enum with `None` as default.
-
-Supported values:
-
-* `None` (default) - the Row is non-scrollable and its content could overflow.
-* `AUTO` - scrolling is enabled and scroll bar is only shown when scrolling occurs.
-* `ADAPTIVE` - scrolling is enabled and scroll bar is always shown when running app as web or desktop.
-* `ALWAYS` - scrolling is enabled and scroll bar is always shown.
-* `HIDDEN` - scrolling is enabled, but scroll bar is always hidden.
+Value is of type [`ScrollMode`](/docs/reference/types/scrollmode).
 
 ### `spacing`
 
-Vertical spacing between controls on the Page. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+Vertical spacing between controls on the Page. Default value is 10 virtual pixels. Spacing is applied only
+when `vertical_alignment` is set to `MainAxisAlignment.START`, `MainAxisAlignment.END` or `MainAxisAlignment.CENTER`.
+
+Value is of type [`OptionalNumber`] and defaults to `10`
 
 ### `vertical_alignment`
 
 How the child Controls should be placed vertically.
 
-For example, `MainAxisAlignment.START`, the default, places the children at the top of a Page.
-
-Property value is `MainAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `END`
-* `CENTER`
-* `SPACE_BETWEEN`
-* `SPACE_AROUND`
-* `SPACE_EVENLY`
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment) and defaults
+to `MainAxisAlignment.START`.
 
 ## Methods
+
+### `confirm_pop(allow: bool)`
+
+Either allow or cancel view removal from the navigation. Used together with `View.can_pop` property and `View.on_confirm_pop` event.
 
 ### `scroll_to(offset, delta, key, duration, curve)`
 
 Moves scroll position to either absolute `offset`, relative `delta` or jump to the control with specified `key`.
 
-See [`Column.scroll_to()`](column#scroll_tooffset-delta-key-duration-curve) for method details and examples.
+See [`Column.scroll_to()`](/docs/controls/column#scroll_tooffset-delta-key-duration-curve) for method details and examples.
 
 ## Events
+
+### `on_confirm_pop`
+
+Fires when a view is about to be removed from the navigation. Allows to ask user for confirmation or do other checks and either allow or cancel removal of a view by calling `View.confirm_pop(True | False)` method. This event is fired if `View.can_pop` set to `False`.
 
 ### `on_scroll`
 
 Fires when scroll position is changed by a user.
 
-See [`Column.on_scroll`](column#on_scroll) for event details and examples.
+Event handler argument is of type [`OnScrollEvent`](/docs/reference/types/onscrollevent).

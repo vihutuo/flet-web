@@ -1,10 +1,7 @@
 ---
 slug: gradients-button-textfield-styles
 title: Beautiful gradients, button styles and TextField rounded corners in a new Flet release
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -13,6 +10,8 @@ We've just released [Flet 0.1.46](https://pypi.org/project/flet/0.1.46/) adding 
 * Gradient backgrounds in Container
 * Extensive styling for buttons, TextField and Dropdown controls
 * ...and more
+
+<!-- truncate -->
 
 ## Gradient backgrounds
 
@@ -54,7 +53,7 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#lineargradient) docs for more information about `LinearGradient` properties.
+Check [`LinearGradient`](/docs/reference/types/lineargradient) docs for more information about `LinearGradient` properties.
 
 ### Radial gradient
 
@@ -86,7 +85,7 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#radialgradient) docs for more information about `RadialGradient` properties.
+Check [`RadialGradient`](/docs/reference/types/radialgradient) docs for more information about `RadialGradient` properties.
 
 ### Sweep gradient
 
@@ -123,12 +122,12 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
-Check [`Container.gradient`](/docs/controls/container#sweepgradient) docs for more information about `SweepGradient` properties.
+Check [`SweepGradient`](/docs/reference/types/sweepgradient) docs for more information about `SweepGradient` properties.
 
 ## Buttons styling
 
 This Flet release introduces `style` property to all button controls which is an instance of `ButtonStyle` class.
-`ButtonStyle` allows controling all visual aspects of a button, such as shape, foreground, background and shadow colors, content padding, border width and radius!
+`ButtonStyle` allows controlling all visual aspects of a button, such as shape, foreground, background and shadow colors, content padding, border width and radius!
 
 Moreover, each individual style attribute could be configured for a different "Material states" of a button, such as "hovered", "focused", "disabled" and others. For example, you can configure a different shape, background color for a hovered state and configure fallback values for all other states.
 
@@ -148,18 +147,18 @@ def main(page: ft.Page):
             "Styled button 1",
             style=ft.ButtonStyle(
                 color={
-                    ft.MaterialState.HOVERED: ft.colors.WHITE,
-                    ft.MaterialState.FOCUSED: ft.colors.BLUE,
-                    ft.MaterialState.DEFAULT: ft.colors.BLACK,
+                    ft.MaterialState.HOVERED: ft.Colors.WHITE,
+                    ft.MaterialState.FOCUSED: ft.Colors.BLUE,
+                    ft.MaterialState.DEFAULT: ft.Colors.BLACK,
                 },
-                bgcolor={ft.MaterialState.FOCUSED: ft.colors.PINK_200, "": ft.colors.YELLOW},
+                bgcolor={ft.MaterialState.FOCUSED: ft.Colors.PINK_200, "": ft.Colors.YELLOW},
                 padding={ft.MaterialState.HOVERED: 20},
-                overlay_color=ft.colors.TRANSPARENT,
+                overlay_color=ft.Colors.TRANSPARENT,
                 elevation={"pressed": 0, "": 1},
                 animation_duration=500,
                 side={
-                    ft.MaterialState.DEFAULT: BorderSide(1, ft.colors.BLUE),
-                    ft.MaterialState.HOVERED: BorderSide(2, ft.colors.BLUE),
+                    ft.MaterialState.DEFAULT: BorderSide(1, ft.Colors.BLUE),
+                    ft.MaterialState.HOVERED: BorderSide(2, ft.Colors.BLUE),
                 },
                 shape={
                     ft.MaterialState.HOVERED: RoundedRectangleBorder(radius=20),
@@ -247,16 +246,16 @@ def main(page: ft.Page):
     page.add(
         ft.TextField(
             text_size=30,
-            cursor_color=ft.colors.RED,
-            selection_color=ft.colors.YELLOW,
-            color=ft.colors.PINK,
-            bgcolor=ft.colors.BLACK26,
+            cursor_color=ft.Colors.RED,
+            selection_color=ft.Colors.YELLOW,
+            color=ft.Colors.PINK,
+            bgcolor=ft.Colors.BLACK26,
             filled=True,
-            focused_color=ft.colors.GREEN,
-            focused_bgcolor=ft.colors.CYAN_200,
+            focused_color=ft.Colors.GREEN,
+            focused_bgcolor=ft.Colors.CYAN_200,
             border_radius=30,
-            border_color=ft.colors.GREEN_800,
-            focused_border_color=ft.colors.GREEN_ACCENT_400,
+            border_color=ft.Colors.GREEN_800,
+            focused_border_color=ft.Colors.GREEN_ACCENT_400,
             max_length=20,
             capitalization="characters",
         )
@@ -283,9 +282,9 @@ def main(page: ft.Page):
             ],
             border_radius=30,
             filled=True,
-            border_color=ft.colors.TRANSPARENT,
-            bgcolor=ft.colors.BLACK12,
-            focused_bgcolor=ft.colors.BLUE_100,
+            border_color=ft.Colors.TRANSPARENT,
+            bgcolor=ft.Colors.BLACK12,
+            focused_bgcolor=ft.Colors.BLUE_100,
         )
     )
 
@@ -311,15 +310,15 @@ def main(page: ft.Page):
 
     page.add(
         ft.IconButton(
-            icon=ft.icons.BATTERY_1_BAR,
-            selected_icon=ft.icons.BATTERY_FULL,
+            icon=ft.Icons.BATTERY_1_BAR,
+            selected_icon=ft.Icons.BATTERY_FULL,
             on_click=toggle_icon_button,
             selected=False,
-            style=ft.ButtonStyle(color={"selected": ft.colors.GREEN, "": ft.colors.RED}),
+            style=ft.ButtonStyle(color={"selected": ft.Colors.GREEN, "": ft.Colors.RED}),
         )
     )
 
 ft.app(target=main)
 ```
 
-[Give Flet a try](/docs/guides/python/getting-started) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
+[Give Flet a try](/docs) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!

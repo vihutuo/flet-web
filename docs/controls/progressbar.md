@@ -1,7 +1,6 @@
 ---
 title: ProgressBar
 sidebar_label: ProgressBar
-slug: progressbar
 ---
 
 A material design linear progress indicator, also known as a progress bar.
@@ -20,53 +19,52 @@ import TabItem from '@theme/TabItem';
 
 [Live example](https://flet-controls-gallery.fly.dev/displays/progressbar)
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-from time import sleep
 
-import flet as ft
-
-def main(page: ft.Page):
-    pb = ft.ProgressBar(width=400)
-
-    page.add(
-        ft.Text("Linear progress indicator", style="headlineSmall"),
-        ft.Column([ ft.Text("Doing something..."), pb]),
-        ft.Text("Indeterminate progress bar", style="headlineSmall"),
-        ft.ProgressBar(width=400, color="amber", bgcolor="#eeeeee"),
-    )
-
-    for i in range(0, 101):
-        pb.value = i * 0.01
-        sleep(0.1)
-        page.update()
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/information-displays/progress-bar/progress-bar.py
 ```
-  </TabItem>
-</Tabs>
 
-<img src="/img/docs/controls/progress-bar/custom-progress-bars.gif" className="screenshot-30"/>
+<img src="/img/docs/controls/progress-bar/progress-bar-example.gif" className="screenshot-30"/>
 
 ## Properties
 
 ### `value`
 
-The value of this progress indicator. A value of 0.0 means no progress and 1.0 means that progress is complete. The value will be clamped to be in the range 0.0-1.0. If null, this progress indicator is indeterminate, which means the indicator displays a predetermined animation that does not indicate how much actual progress is being made.
+The value of this progress indicator. A value of `0.0` means no progress and `1.0` means that progress is complete. The
+value will be clamped to be in the range `0.0` - `1.0`.
+
+Defaults to `None`, meaning that this progress indicator is indeterminate - displays a predetermined animation that does
+not indicate how much actual progress is being made.
 
 ### `bar_height`
 
-The minimum height of the line used to draw the linear indicator. Default is 4.
+The minimum height of the line used to draw the linear indicator.
 
-### `color`
+Defaults to `4`.
 
-The progress indicator's [color](/docs/guides/python/colors).
+### `border_radius`
+
+The border radius of both the indicator and the track. Border radius is an instance
+of [`BorderRadius`](/docs/reference/types/borderradius) class.
+
+Defaults to `border_radius.all(0)` - rectangular shape.
 
 ### `bgcolor`
 
-[Color](/docs/guides/python/colors) of the track being filled by the linear indicator.
+[Color](/docs/reference/colors) of the track being filled by the linear indicator.
+
+### `color`
+
+The progress indicator's [color](/docs/reference/colors).
+
+### `semantics_label`
+
+The [`Semantics.label`](/docs/controls/semantics#label) for this progress indicator.
+
+### `semantics_value`
+
+The [`Semantics.value`](/docs/controls/semantics#value) for this progress indicator.
 
 ### `tooltip`
 

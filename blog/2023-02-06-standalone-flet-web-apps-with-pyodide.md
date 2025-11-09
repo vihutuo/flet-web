@@ -1,20 +1,19 @@
 ---
 slug: standalone-flet-web-apps-with-pyodide
 title: Standalone Flet web apps with Pyodide
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [releases]
 ---
 
 import Card from '@site/src/components/card';
 
-We've just released [Flet 0.4.0](https://pypi.org/project/flet/) with a super exciting new feature - [packaging Flet apps into a standalone static website](/docs/guides/python/publishing-static-website) that can be run entirely in the browser! The app can be published to any free hosting for static websites such as GitHub Pages or Cloudflare Pages. Thanks to [Pyodide](https://pyodide.org/en/stable/) - a Python port to WebAssembly!
+We've just released [Flet 0.4.0](https://pypi.org/project/flet/) with a super exciting new feature - [packaging Flet apps into a standalone static website](/docs/publish/web/static-website) that can be run entirely in the browser! The app can be published to any free hosting for static websites such as GitHub Pages or Cloudflare Pages. Thanks to [Pyodide](https://pyodide.org/en/stable/) - a Python port to WebAssembly!
 
 <img src="/img/blog/pyodide/pyodide-logo.png" className="screenshot-50" />
 
 You can quickly build awesome single-page applications (SPA) entirely in Python and host them everywhere! No HTML, CSS or JavaScript required!
+
+<!-- truncate -->
 
 ## Quick Flet with Pyodide demo
 
@@ -46,9 +45,9 @@ def main(page: ft.Page):
     page.add(
         ft.Row(
             [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
+                ft.IconButton(ft.Icons.REMOVE, on_click=minus_click),
                 txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
+                ft.IconButton(ft.Icons.ADD, on_click=plus_click),
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -95,7 +94,7 @@ export const ImageCard = ({title, href, imageUrl}) => (
   </section>
 </div>
 
-[Check the guide](/docs/guides/python/publishing-static-website) for more information about publishing Flet apps as standalone websites.
+[Check the guide](/docs/publish/web/static-website) for more information about publishing Flet apps as standalone websites.
 
 ## Built-in Fletd server in Python
 
@@ -141,7 +140,7 @@ async def main(page: ft.Page):
 ft.app(main)
 ```
 
-[Read the guide](/docs/guides/python/async-apps) for more information about writing async Flet apps.
+[Read the guide](/docs/getting-started/async-apps) for more information about writing async Flet apps.
 
 ## Conclusion
 

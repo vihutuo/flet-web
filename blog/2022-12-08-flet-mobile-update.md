@@ -1,10 +1,7 @@
 ---
 slug: flet-mobile-update
 title: Flet mobile update
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [news]
 ---
 
@@ -13,6 +10,8 @@ This post is a continuation of [Flet mobile strategy](/blog/flet-mobile-strategy
 Our original approach to Flet running on a mobile device was Server-Driven UI. Though SDUI has its own benefits (like bypassing App Store for app updates) it doesn't work in all cases, requires web server to host Python part of the app and, as a result, adds latency which is not great for user actions requiring nearly instance UI response, like drawing apps.
 
 I've been thinking on how to make Python runtime embedded into Flutter iOS or Android app to run user Python program. No doubt, it's technically possible as Kivy and BeeWare projects do that already.
+
+<!-- truncate -->
 
 ## Current Flet architecture
 
@@ -63,7 +62,7 @@ Using of async libraries from a sync code is [possible](https://github.com/flet-
 
 Async/await model is a state machine switching between tasks in a single thread. By going async Flet will able to utilize [streams](https://docs.python.org/3/library/asyncio-stream.html) for socket server and use async [WebSockets library](https://pypi.org/project/websockets/) library. It will be possible to use both sync and async event handlers in a single Flet app without any compromises or hacks.
 
-Even more exciting, async Flet will be able to run entirely in the browser within [Pyodide](https://pyodide.org/) - Python distribution based on WebAssembly (WASM). WebAssembly doesn't have multi-threading support yet, so running in a single thread is a must. Just imagine, Flet web app with a trully offline Flet PWA that does not require a web server to run a Python code!
+Even more exciting, async Flet will be able to run entirely in the browser within [Pyodide](https://pyodide.org/) - Python distribution based on WebAssembly (WASM). WebAssembly doesn't have multi-threading support yet, so running in a single thread is a must. Just imagine, Flet web app with a truly offline Flet PWA that does not require a web server to run a Python code!
 
 ## Development plan
 

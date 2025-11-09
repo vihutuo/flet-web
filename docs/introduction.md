@@ -7,17 +7,15 @@ slug: /
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## What is Flet
+## What is Flet?
 
-Flet is a framework that allows building interactive multi-user web, desktop and mobile applications in your favorite language without prior experience in frontend development.
+Flet is a framework that allows building web, desktop and mobile applications in Python without prior experience in frontend development.
 
-You build a UI for your program with Flet [controls](/docs/controls) which are based on [Flutter](https://flutter.dev) by Google. Flet does not just "wrap" Flutter widgets, but adds its own "opinion" by combining smaller widgets, hiding complexities, implementing UI best-practices, applying reasonable defaults - all to ensure your apps look cool and professional without extra efforts.
+You can build a UI for your program with Flet [controls](/docs/controls) which are based on [Flutter](https://flutter.dev) by Google. Flet goes beyond merely wrapping Flutter widgets. It adds its own touch by combining smaller widgets, simplifying complexities, implementing UI best practices, and applying sensible defaults. This ensures that your applications look stylish and polished without requiring additional design efforts on your part.
 
 ## Flet app example
 
-At the moment you can write Flet apps in Python and other languages will be added soon.
-
-Here is a sample "Counter" app:
+Create a sample "Counter" app:
 
 ```python title="counter.py"
 import flet as ft
@@ -39,27 +37,27 @@ def main(page: ft.Page):
     page.add(
         ft.Row(
             [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
+                ft.IconButton(ft.Icons.REMOVE, on_click=minus_click),
                 txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
+                ft.IconButton(ft.Icons.ADD, on_click=plus_click),
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
     )
 
-ft.app(target=main)
+ft.app(main)
 ```
 
-To run the app install `flet` module:
+To run the app install `flet` module ([create a new Flet environment](/docs/getting-started)):
 
 ```bash
 pip install flet
 ```
 
-and run the program:
+and [run the program](/docs/getting-started/running-app):
 
 ```bash
-python counter.py
+flet run counter.py
 ```
 
 The app will be started in a native OS window - what a nice alternative to Electron!
@@ -75,18 +73,12 @@ The app will be started in a native OS window - what a nice alternative to Elect
   </div>  
 </div>
 
-Now, if you want to run the app as a web app, just replace the last line with:
+Now, run your app as a web app:
 
-```python
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+```
+flet run --web counter.py
 ```
 
-run again and now you instantly get a web app:
+A new browser window or tab will be opened:
 
 <img src="/img/docs/getting-started/flet-counter-safari.png" className="screenshot-50" />
-
-## Tutorials
-
-Want to learn how to build a real app? Jump to a getting started guide for your language:
-
-* [Python](/docs/guides/python/getting-started)

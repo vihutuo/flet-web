@@ -1,10 +1,7 @@
 ---
 slug: drag-and-drop-release
 title: 'New release: Drag and Drop, absolute positioning and clickable container'
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -19,6 +16,8 @@ Making drag-and-drop in Flet is a real joy - thanks to a smart drag-and-drop imp
 Take a look at [Drag-and-Drop example](https://github.com/flet-dev/examples/blob/main/python/controls/drag-and-drop/drag-drop-colors.py).
 
 Explore [`Draggable`](/docs/controls/draggable) and [`DragTarget`](/docs/controls/dragtarget) controls, their properties and events.
+
+<!-- truncate -->
 
 ## Absolute positioning inside Stack
 
@@ -36,18 +35,18 @@ def main(page: ft.Page):
         ft.Container(
             ft.Stack(
                 [
-                    ft.Text("1", color=ft.colors.WHITE),
-                    ft.Text("2", color=ft.colors.WHITE, right=0),
-                    ft.Text("3", color=ft.colors.WHITE, right=0, bottom=0),
-                    ft.Text("4", color=ft.colors.WHITE, left=0, bottom=0),
-                    ft.Text("5", color=ft.colors.WHITE, left=40, top=35),
+                    ft.Text("1", color=ft.Colors.WHITE),
+                    ft.Text("2", color=ft.Colors.WHITE, right=0),
+                    ft.Text("3", color=ft.Colors.WHITE, right=0, bottom=0),
+                    ft.Text("4", color=ft.Colors.WHITE, left=0, bottom=0),
+                    ft.Text("5", color=ft.Colors.WHITE, left=40, top=35),
                 ]
             ),
             border_radius=8,
             padding=5,
             width=100,
             height=100,
-            bgcolor=ft.colors.BROWN_700,
+            bgcolor=ft.Colors.BROWN_700,
         )
     )
 
@@ -64,5 +63,5 @@ ft.app(target=main)
 
 See [source code](https://github.com/flet-dev/examples/blob/main/python/controls/container/clickable-container.py) for the example above.
 
-[Give Flet a try](/docs/guides/python/getting-started) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
+[Give Flet a try](/docs) and [let us know](https://discord.gg/dzWXP8SHG8) what you think!
 

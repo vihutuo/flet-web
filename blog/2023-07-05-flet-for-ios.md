@@ -1,10 +1,7 @@
 ---
 slug: flet-for-ios
 title: Flet for iOS
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [releases]
 ---
 
@@ -16,9 +13,11 @@ With Flet iOS app you can see how your Flet Python app looks and behaves on iPho
 
 But it's more than just testing Flet apps on the phone! Flet mobile app itself is written in Python and its publishing to App Store is an important milestone for the entire Flet project. It is a successful proof that you can create awesome mobile apps in Python only and package them so that they are accepted in App Store!
 
-**[Follow this guide](/docs/guides/python/testing-on-ios)** to get started with testing your Flet apps on iPhone or iPad. Explore the app, browse gallery, play with sample projects and app settings.
+**[Follow this guide](/docs/getting-started/testing-on-ios)** to get started with testing your Flet apps on iPhone or iPad. Explore the app, browse gallery, play with sample projects and app settings.
 
 I would like to thank [Kivy project](https://kivy.org/) for making a [toolchain for iOS](https://github.com/kivy/kivy-ios) which we used to compile Python interpreter and dependencies for iOS devices. We published [serious_python](https://pub.dev/packages/serious_python) package for adding Python runtime to any Flutter app.
+
+<!-- truncate -->
 
 ## FAQ
 

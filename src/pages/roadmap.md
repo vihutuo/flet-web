@@ -3,69 +3,44 @@ title: Roadmap
 slug: roadmap
 ---
 
-## September 2023 - January 2024
+# Roadmap
 
-The goal: stabilization and Flet 1.0 launch.
+## 2025
 
-* Unified packaging for all platforms: Windows, Linux, macOS, web, iOS and Android - based on `serious_python` and Flutter SDK.
-* Speed optimizations (pages with a lot of controls, large updates).
-* Adaptive UI - adaptive controls that change their look depending on the platform the app runs.
-* Responsive UI - layouts that adapt to a device screen size.
-* Localization.
-* Extensibility:
-  * How to integrate 3rd-party Flutter packages to your apps.
-  * How to use 3rd-party Python packages in iOS and Android apps.
-* Documentation improvements.
-* Bugfixing.
-* Test suite.
-* Website updates: clearer message, Flet features.
-* Flet Packaging and Deployment Service aka Flet CI.
+### Flet 1.0
 
-New controls:
-* [Video](https://github.com/flet-dev/flet/issues/257)
-* :white_check_mark: [WebView](https://github.com/flet-dev/flet/issues/432)
-* :white_check_mark: [NavigationDrawer](https://github.com/flet-dev/flet/issues/1089)
-* [Autocomplete](https://github.com/flet-dev/flet/issues/791)
-* [AutofillGroup](https://github.com/flet-dev/flet/issues/848)
-* [ExpansionTile](https://github.com/flet-dev/flet/issues/1719) and [ExpansionPanel](https://github.com/flet-dev/flet/issues/1718)
-* :white_check_mark: [RangeSlider](https://github.com/flet-dev/flet/issues/1712)
+* **Long-term maintainability:** Controls are implemented using Python **dataclasses**, while the Flutter client adopts the built-in state management approach, eliminating the need for Redux. Ensures symmetric data structures in Python and Dart.
+* **Enhanced Developer Experience (DX):** Control documentation is generated directly from source code, preventing discrepancies between docs, comments, and examples. Provides accurate IDE assistance.
+* **Optimized Communication:** A binary protocol between Python and Dart eliminates unnecessary base64-to-bytes conversions, reducing CPU overhead and improving memory efficiency.
+
+Flet 0.90 will be released as a preparatory step for Flet 1.0, introducing major changes, including breaking updates.
+
+### Website
+
+* **Ecosystem:** Community gallery for apps, extensions and educational materials (videos, tutorials, talks, etc.).
+
+### Testing
+
+* Test suite for Flet controls.
+* Test suite for non-pure Python modules.
+
+### Controls
+
+* :white_check_mark: [Google Mobile Ads](https://github.com/flet-dev/flet/issues/286)
+* :white_check_mark: [DropdownMenu](https://github.com/flet-dev/flet/issues/1088)
+* :construction: [Camera](https://github.com/flet-dev/flet/issues/1281)
+* [DataTable2](https://github.com/flet-dev/flet/issues/4576)
 * [Context menu](https://github.com/flet-dev/flet/issues/1804)
-* [PlatformMenuBar](https://github.com/flet-dev/flet/issues/285) (and [#116](https://github.com/flet-dev/flet/issues/116))
-* [MenuBar](https://github.com/flet-dev/flet/issues/1087)
-* [SegmentedButton](https://github.com/flet-dev/flet/issues/1639)
-* :white_check_mark: [Chip](/docs/controls/chip)
-* [SearchAnchor](https://github.com/flet-dev/flet/issues/1637)
-* [SearchBar](https://github.com/flet-dev/flet/issues/1808)
-* :white_check_mark: [DatePicker](/docs/controls/datepicker)
-* [SelectionArea](https://github.com/flet-dev/flet/issues/1554)
-* [Camera](https://github.com/flet-dev/flet/issues/1281)
-* [AudioRecorder](https://github.com/flet-dev/flet/issues/419)
-* :white_check_mark:[Badge](https://github.com/flet-dev/flet/issues/1264)
-* [Rive](https://github.com/flet-dev/flet/issues/89)
-* [Lottie](https://github.com/flet-dev/flet/issues/88)
-* [Location](https://github.com/flet-dev/flet/issues/66)
-* [Map](https://github.com/flet-dev/flet/issues/1193)
-* [Google Mobile Ads](https://github.com/flet-dev/flet/issues/286)
-* [Dismissable](https://github.com/flet-dev/flet/issues/482)
 * [InAppPurchase](https://github.com/flet-dev/flet/issues/853)
-* [TreeView](https://github.com/flet-dev/flet/issues/961)
-* [DropdownMenu](https://github.com/flet-dev/flet/issues/1088)
-* [BottomAppBar](https://github.com/flet-dev/flet/issues/1643)
+* [PlatformMenuBar](https://github.com/flet-dev/flet/issues/285) (and [#116](https://github.com/flet-dev/flet/issues/116))
 * [SliverAppBar](https://github.com/flet-dev/flet/issues/1843)
+* [TreeView](https://github.com/flet-dev/flet/issues/961)
+* [Sms](https://github.com/flet-dev/flet/issues/3195)
 
-Adaptive controls:
-* AlertDialog
-* Button
-* ContextMenu
-* NavigationBar
-* DatePicker
-* TimePicker
-* ListTile
-* Slider
-* Switch
-* TabBar
-* Checkbox
+### Community
 
-## May 2024
+* Presenting poster at [PyCon US 2025](https://us.pycon.org/2025/)
 
-* [PyCon US 2024](https://pycon.blogspot.com/2021/05/pycon-us-2024-and-2025-announcement.html)
+### Packaging
+
+* Flet Packaging and Publishing Service (FPS).

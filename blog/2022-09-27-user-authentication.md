@@ -1,10 +1,7 @@
 ---
 slug: user-authentication
 title: User authentication
-author: Feodor Fitsner
-author_title: Flet founder and developer
-author_url: https://github.com/FeodorFitsner
-author_image_url: https://avatars0.githubusercontent.com/u/5041459?s=400&v=4
+authors: feodor
 tags: [release]
 ---
 
@@ -19,6 +16,8 @@ Now you can implement user authentication ("Login with X" buttons) in your Flet 
 Traditionally, this release is not just about authentication, but it adds a ton of accompanying functionality and small improvements:
 
 <TOCInline toc={toc} maxHeadingLevel={2} />
+
+<!-- truncate -->
 
 ## Authentication
 
@@ -74,7 +73,7 @@ $ export GITHUB_CLIENT_SECRET="<client_secret>"
 ```
 :::
 
-[Read Authentication guide for more information and examples](/docs/guides/python/authentication).
+[Read Authentication guide for more information and examples](/docs/cookbook/authentication).
 
 ## Client storage
 
@@ -92,7 +91,7 @@ Reading data:
 value = page.client_storage.get("key")
 ```
 
-[Read Client storage guide for more information and examples](/docs/guides/python/client-storage).
+[Read Client storage guide for more information and examples](/docs/cookbook/client-storage).
 
 ## Session storage
 
@@ -110,7 +109,7 @@ Reading data:
 value = page.session.get("key")
 ```
 
-[Read Session storage guide for more information and examples](/docs/guides/python/session-storage)
+[Read Session storage guide for more information and examples](/docs/cookbook/session-storage)
 
 ## Encryption API
 
@@ -134,7 +133,7 @@ plain_text = decrypt(encrypted_data, secret_key)
 print(plain_text)
 ```
 
-[Continue reading for more information and examples](/docs/guides/python/encrypting-sensitive-data).
+[Continue reading for more information and examples](/docs/cookbook/encrypting-sensitive-data).
 
 ## Other improvements
 
@@ -143,15 +142,15 @@ print(plain_text)
   * [`Image.color_blend_mode`](/docs/controls/image#color_blend_mode)
   * [`Image.semantics_label`](/docs/controls/image#semantics_label)
   * [`Image.gapless_playback`](/docs/controls/image#gapless_playback)
-* [`on_animation_end` callback](/docs/guides/python/animations#animation-end-callback) to chain animations.
+* [`on_animation_end` callback](/docs/cookbook/animations#animation-end-callback) to chain animations.
 * [`Container.clip_behavior` property](/docs/controls/container#clip_behavior).
-* [`page.window_bgcolor`](/docs/controls/page#window_bgcolor) to make cool transparent app window:
+* [`page.window.bgcolor`](/docs/reference/types/window#bgcolor) to make cool transparent app window:
 
 ```python
 import flet as ft
 def main(page: ft.Page):
-    page.window_bgcolor = ft.colors.TRANSPARENT
-    page.bgcolor=ft.colors.TRANSPARENT
+    page.window_bgcolor = ft.Colors.TRANSPARENT
+    page.bgcolor=ft.Colors.TRANSPARENT
     page.window_title_bar_hidden = True
     page.window_frameless = True
     page.window_left = 400
@@ -166,7 +165,7 @@ ft.app(target=main)
     * `web_popup_window` - set to `True` to display a URL in a browser popup window. Default is `False`.
     * `window_width` - optional, popup window width.
     * `window_height` - optional, popup window height.
-* [`page.window_to_front()`](/docs/controls/page#window_to_front)
+* [`page.window.to_front()`](/docs/reference/types/window#to_front)
 * [`page.close_in_app_web_view()`](/docs/controls/page#close_in_app_web_view)
 
 

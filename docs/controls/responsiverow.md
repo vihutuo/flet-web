@@ -1,7 +1,6 @@
 ---
 title: ResponsiveRow
 sidebar_label: ResponsiveRow
-slug: responsiverow
 ---
 
 import Tabs from '@theme/Tabs';
@@ -50,69 +49,18 @@ ft.ResponsiveRow([
 
 ## Examples
 
+[Live example](https://flet-controls-gallery.fly.dev/layout/responsiverow)
+
 ### ResponsiveRow
 
-<img src="/img/docs/controls/responsive-row/responsive-layout.gif" className="screenshot-100"/>
+<img src="/img/docs/controls/responsive-row/responsive-row.gif" className="screenshot-100"/>
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-```python
-import flet as ft
 
-def main(page: ft.Page):
-    def page_resize(e):
-        pw.value = f"{page.width} px"
-        pw.update()
-
-    page.on_resize = page_resize
-
-    pw = ft.Text(bottom=50, right=50, style="displaySmall")
-    page.overlay.append(pw)
-    page.add(
-        ft.ResponsiveRow(
-            [
-                ft.Container(
-                    ft.Text("Column 1"),
-                    padding=5,
-                    bgcolor=ft.colors.YELLOW,
-                    col={"sm": 6, "md": 4, "xl": 2},
-                ),
-                ft.Container(
-                    ft.Text("Column 2"),
-                    padding=5,
-                    bgcolor=ft.colors.GREEN,
-                    col={"sm": 6, "md": 4, "xl": 2},
-                ),
-                ft.Container(
-                    ft.Text("Column 3"),
-                    padding=5,
-                    bgcolor=ft.colors.BLUE,
-                    col={"sm": 6, "md": 4, "xl": 2},
-                ),
-                ft.Container(
-                    ft.Text("Column 4"),
-                    padding=5,
-                    bgcolor=ft.colors.PINK_300,
-                    col={"sm": 6, "md": 4, "xl": 2},
-                ),
-            ],
-        ),
-        ft.ResponsiveRow(
-            [
-                ft.TextField(label="TextField 1", col={"md": 4}),
-                ft.TextField(label="TextField 2", col={"md": 4}),
-                ft.TextField(label="TextField 3", col={"md": 4}),
-            ],
-            run_spacing={"xs": 10},
-        ),
-    )
-    page_resize(None)
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/layout/responsive-row/responsive-layout.py
 ```
-  </TabItem>
-</Tabs>
+
 
 ## Properties
 
@@ -120,41 +68,41 @@ ft.app(target=main)
 
 How the child Controls should be placed horizontally.
 
-For example, `MainAxisAlignment.START`, the default, places the children on the left of a Row.
-
-Property value is `MainAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `END`
-* `CENTER`
-* `SPACE_BETWEEN`
-* `SPACE_AROUND`
-* `SPACE_EVENLY`
+Value is of type [`MainAxisAlignment`](/docs/reference/types/mainaxisalignment) and defaults
+to `MainAxisAlignment.START`.
 
 ### `columns`
 
-The number of virtual columns to layout children. Default is 12.
+The number of virtual columns to layout children.
+
+Defaults to `12`.
 
 ### `controls`
 
 A list of Controls to display inside the ResponsiveRow.
 
+### `rtl`
+
+`True` to set text direction to right-to-left.
+
+Defaults to `False`.
+
 ### `run_spacing`
 
-Spacing between runs when row content is wrapped on multiple lines. Default value is 10.
+Spacing between runs when row content is wrapped on multiple lines.
+
+Defaults to `10`.
 
 ### `spacing`
 
-Spacing between controls in a row. Default value is 10 virtual pixels. Spacing is applied only when `alignment` is set to `start`, `end` or `center`.
+Spacing between controls in a row in virtual pixels. It is applied only when `alignment` is set
+to `MainAxisAlignment.START`, `MainAxisAlignment.END` or `MainAxisAlignment.CENTER`.
+
+Defaults to `10`.
 
 ### `vertical_alignment`
 
 How the child Controls should be placed vertically.
 
-Property value is `CrossAxisAlignment` enum with the following values:
-
-* `START` (default)
-* `CENTER`
-* `END`
-* `STRETCH`
-* `BASELINE`
+Value is of type [`CrossAxisAlignment`](/docs/reference/types/crossaxisalignment) and defaults
+to `CrossAxisAlignment.START`.

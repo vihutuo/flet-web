@@ -1,7 +1,6 @@
 ---
 title: Markdown
 sidebar_label: Markdown
-slug: markdown
 ---
 
 Control for rendering text in markdown format.
@@ -15,108 +14,20 @@ import TabItem from '@theme/TabItem';
 
 ### Markdown with GitHubWeb extensions and clickable links
 
-<Tabs groupId="language">
-  <TabItem value="python" label="Python" default>
 
-````python
-import flet as ft
-
-md1 = """
-# Markdown Example
-Markdown allows you to easily include formatted text, images, and even formatted Dart code in your app.
-
-## Titles
-
-Setext-style
-
-This is an H1
-=============
-
-This is an H2
--------------
-
-Atx-style
-
-# This is an H1
-
-## This is an H2
-
-###### This is an H6
-
-Select the valid headers:
-
-- [x] `# hello`
-- [ ] `#hello`
-
-## Links
-
-[inline-style](https://www.google.com)
-
-## Images
-
-![Image from Flet assets](/icons/icon-192.png)
-
-![Test image](https://picsum.photos/200/300)
-
-## Tables
-
-|Syntax                                 |Result                               |
-|---------------------------------------|-------------------------------------|
-|`*italic 1*`                           |*italic 1*                           |
-|`_italic 2_`                           | _italic 2_                          |
-|`**bold 1**`                           |**bold 1**                           |
-|`__bold 2__`                           |__bold 2__                           |
-|`This is a ~~strikethrough~~`          |This is a ~~strikethrough~~          |
-|`***italic bold 1***`                  |***italic bold 1***                  |
-|`___italic bold 2___`                  |___italic bold 2___                  |
-|`***~~italic bold strikethrough 1~~***`|***~~italic bold strikethrough 1~~***|
-|`~~***italic bold strikethrough 2***~~`|~~***italic bold strikethrough 2***~~|
-
-## Styling
-
-Style text as _italic_, __bold__, ~~strikethrough~~, or `inline code`.
-
-- Use bulleted lists
-- To better clarify
-- Your points
-
-## Code blocks
-
-Formatted Dart code looks really pretty too:
-
-```
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: ft.Markdown(data: markdownData),
-    ),
-  ));
-}
-```
-"""
-
-def main(page: ft.Page):
-    page.scroll = "auto"
-    page.add(
-        ft.Markdown(
-            md1,
-            selectable=True,
-            extension_set=ft.MarkdownExtensionSet.GITHUB_WEB,
-            on_tap_link=lambda e: page.launch_url(e.data),
-        )
-    )
-
-ft.app(target=main)
+````python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/information-displays/markdown/markdown-basic.py
 ````
 
-  </TabItem>
-</Tabs>
+
 
 <img src="/img/docs/controls/markdown/custom-markdown.gif" className="screenshot-40"/>
 
 ### Markdown with code syntax highlight
 
-[Source code](https://github.com/flet-dev/examples/blob/main/python/controls/markdown/markdown-code-highlight.py)
+````python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/information-displays/markdown/markdown-code-highligh.py
+````
 
 <img src="/img/docs/controls/markdown/markdown-highlight.png" className="screenshot-60"/>
 
@@ -128,138 +39,60 @@ Automatically open URLs in the document. Default is `False`. If registered, `on_
 
 ### `auto_follow_links_target`
 
-Where to open URL in the web mode:
+Where to open URL in the web mode
 
-* `_blank` (default) - new tab/window.
-* `_self` - the current tab/window.
+Value is of type [`UrlTarget`](/docs/reference/types/urltarget) and defaults to `UrlTarget.SELF`.
 
-### `code_style`
+### `code_style_sheet`
 
-Code block text style. The value is an instance of [`ft.TextStyle`](text#textstyle-properties) class.
+The styles to use when displaying the code blocks.
 
-An example of configuring monospace font for Markdown code blocks:
-
-```python
-    page.fonts = {
-        "Roboto Mono": "RobotoMono-VariableFont_wght.ttf",
-    }
-
-    page.add(
-        Markdown(
-            table,
-            selectable=True,
-            extension_set="gitHubWeb",
-            code_theme="atom-one-dark",
-            code_style=TextStyle(font_family="Roboto Mono"),
-            on_tap_link=lambda e: page.launch_url(e.data),
-        )
-    )
-```
+Value is of type [`MarkdownStyleSheet`](/docs/reference/types/markdownstylesheet).
 
 ### `code_theme`
 
 A syntax highlighting theme for code blocks.
 
-Supported themes:
-
-* `a11y-dark`
-* `a11y-light`
-* `agate`
-* `an-old-hope`
-* `androidstudio`
-* `arduino-light`
-* `arta`
-* `ascetic`
-* `atelier-cave-dark`
-* `atelier-cave-light`
-* `atelier-dune-dark`
-* `atelier-dune-light`
-* `atelier-estuary-dark`
-* `atelier-estuary-light`
-* `atelier-forest-dark`
-* `atelier-forest-light`
-* `atelier-heath-dark`
-* `atelier-heath-light`
-* `atelier-lakeside-dark`
-* `atelier-lakeside-light`
-* `atelier-plateau-dark`
-* `atelier-plateau-light`
-* `atelier-savanna-dark`
-* `atelier-savanna-light`
-* `atelier-seaside-dark`
-* `atelier-seaside-light`
-* `atelier-sulphurpool-dark`
-* `atelier-sulphurpool-light`
-* `atom-one-dark-reasonable`
-* `atom-one-dark`
-* `atom-one-light`
-* `brown-paper`
-* `codepen-embed`
-* `color-brewer`
-* `darcula`
-* `dark`
-* `default`
-* `docco`
-* `dracula`
-* `far`
-* `foundation`
-* `github-gist`
-* `github` (default)
-* `gml`
-* `googlecode`
-* `gradient-dark`
-* `grayscale`
-* `gruvbox-dark`
-* `gruvbox-light`
-* `hopscotch`
-* `hybrid`
-* `idea`
-* `ir-black`
-* `isbl-editor-dark`
-* `isbl-editor-light`
-* `kimbie.dark`
-* `kimbie.light`
-* `lightfair`
-* `magula`
-* `mono-blue`
-* `monokai-sublime`
-* `monokai`
-* `night-owl`
-* `nord`
-* `obsidian`
-* `ocean`
-* `paraiso-dark`
-* `paraiso-light`
-* `pojoaque`
-* `purebasic`
-* `qtcreator_dark`
-* `qtcreator_light`
-* `railscasts`
-* `rainbow`
-* `routeros`
-* `school-book`
-* `shades-of-purple`
-* `solarized-dark`
-* `solarized-light`
-* `sunburst`
-* `tomorrow-night-blue`
-* `tomorrow-night-bright`
-* `tomorrow-night-eighties`
-* `tomorrow-night`
-* `tomorrow`
-* `vs`
-* `vs2015`
-* `xcode`
-* `xt256`
-* `zenburn`
+Value is of type [`MarkdownCodeTheme`](/docs/reference/types/markdowncodetheme) and defaults to `MarkdownCodeTheme.GITHUB`.
 
 ### `extension_set`
 
-Property value is `MarkdownExtensionSet` enum with the following values: `NONE` (default), `COMMON_MARK`, `GITHUB_WEB`, `GITHUB_FLAVORED`.
+The extensions to use when rendering the markdown content.
+
+Value is of type [`MarkdownExtensionSet`](/docs/reference/types/markdownextensionset) and defaults
+to `MarkdownExtensionSet.NONE`.
+
+### `fit_content`
+
+Whether to allow the widget to fit the child content.
+
+Value is of type `bool` and defaults to `True`.
+
+### `img_error_content`
+
+The `Control` to display when an image fails to load.
+
+### `md_style_sheet`
+
+The styles to use when displaying the markdown.
+
+Value is of type [`MarkdownStyleSheet`](/docs/reference/types/markdownstylesheet).
 
 ### `selectable`
 
 Whether rendered text is selectable or not.
+
+### `shrink_wrap`
+
+Whether the extent of the scroll view in the scroll direction should be determined by the contents being viewed.
+
+Value is of type `bool` and defaults to `True`.
+
+### `soft_line_break`
+
+The soft line break is used to identify the spaces at the end of aline of text and the leading spaces in the immediately following the line of text.
+
+Value is of type `bool` and defaults to `False`.
 
 ### `value`
 
@@ -273,21 +106,16 @@ Fires when a link within Markdown document is clicked/tapped. `data` property of
 
 The following example opens markdown URLs in a new window:
 
-```python
-import flet as ft
-
-def main(page: ft.Page):
-    def open_url(e):
-        page.launch_url(e.data)
-
-    page.add(
-        ft.Markdown(
-            "[inline-style](https://www.google.com)",
-            extension_set="gitHubWeb",
-            on_tap_link=open_url,
-            expand=True,
-        ),
-    )
-
-ft.app(target=main)
+```python reference
+https://github.com/flet-dev/examples/blob/main/python/controls/information-displays/markdown/markdown-event-example.py
 ```
+
+### `on_selection_change`
+
+Fires when the text selection changes.
+
+Event handler argument is of type [`MarkdownSelectionChangeEvent`](/docs/reference/types/markdownselectionchangeevent).
+
+### `on_tap_text`
+
+Fires when some text is clicked/tapped.
